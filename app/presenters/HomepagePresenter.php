@@ -7,11 +7,15 @@ use App\Model;
 
 
 class HomepagePresenter extends BasePresenter
-{
+{  
+    
 
 	public function renderDefault()
 	{
-		$this->template->anyVariable = 'any value';
+            $user = $this->user->loggedIn;
+		if(!$user){
+                    $this->redirect('Sign:in');
+                }
 	}
 
 }

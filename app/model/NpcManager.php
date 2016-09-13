@@ -4,9 +4,9 @@ namespace App\Model;
 
 use Nette;
 use App\Model;
-use Nette\Database\Context;
+use Nette\database\context;
 
-class NpcManager extends Nette\Object {
+class NpcManager extends Nette\Object{
 
 	protected $db;
 
@@ -14,16 +14,29 @@ class NpcManager extends Nette\Object {
 			COLUMN_ID = 'npc_id',
 			COLUMN_NAME = 'name',
 			COLUMN_AVATAR = 'avatar',
-			COLUMN_FIRST_DAMAGE = 'first_damage',
-			COLUMN_SECOND_DAMAGE = 'second_damage',
-			COLUMN_STATE_ID = 'state_id';
+			COLUMN_FIRST = 'first_damage',
+			COLUMN_SECOND = 'second_damage',
+			COLUMN_STATE = 'state_id';
 
 	public function __constructor(Context $db){
 		$this->db = $db;
 	}
 
-	public function getAllNpc(){
-		
+	public function getNpcs (){
+		return this->$db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
 	}
 
+	public function getNpc($id){
+		return this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+	}
+
+	public function deleteNpc($id) {
+		return this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+	}
+	public function setNpc ($data){
+		return this->$db->table(self::TABLE_NAME)->insert($data);
+	}
+	public function updateNpc($data) {
+		return this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["npc_id"])->update($data);
+	}
 }

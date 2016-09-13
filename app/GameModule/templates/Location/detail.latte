@@ -1,0 +1,18 @@
+{* Latte template *}
+
+{block content}
+{if $npcs}
+    <div class="ghoul-list">
+        {foreach $npcs as $npc}
+            <div class="ghoul-item">
+                <div>{$npc->name}</div>
+                <div>
+                    <img src="{$basePath}/{$npc->avatar}" />
+                </div>
+                <div>
+                    <a n:href="pveDuel! $npc->npc_id"><button class="enter-button">Fight</button></a>
+                </div>
+            </div>
+        {/foreach}
+    </div>
+{/if}

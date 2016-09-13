@@ -1,0 +1,27 @@
+{block content}
+<div class="container">
+    <form n:name=signInForm>
+        <table class="registrationForm">
+            <tbody>
+                <tr>
+                    <td width="60px"><i class="fa fa-user" aria-hidden="true"></i></td>
+                    <td><input n:name=username placeholder="username" /></td>
+                </tr>
+                <tr>
+                    <td width="60px"><i class="fa fa-lock" aria-hidden="true"></i></td>
+                    <td><input n:name=password placeholder="password"/></td>
+                </tr>
+            </tbody>
+        </table>
+        <table>
+            <tbody>
+                <tr>
+                    <td width="150px"><input class="link" n:name=send /></td>
+                    <td><a class="link" n:href=Registration:>Register</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>  
+
+{* or use {include '../components/form.latte', form => signInForm} *}

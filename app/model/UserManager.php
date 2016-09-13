@@ -3,6 +3,7 @@
 namespace App\Model;
 
 use Nette;
+use App\Model;
 use Nette\Security\Passwords;
 
 
@@ -12,11 +13,15 @@ use Nette\Security\Passwords;
 class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 {
 	const
-		TABLE_NAME = 'users',
-		COLUMN_ID = 'id_user',
+		TABLE_NAME = 'user',
+        TABLE_USER_STAT = 'user_stat',
+		COLUMN_ID = 'user_id',
 		COLUMN_NAME = 'username',
 		COLUMN_PASSWORD_HASH = 'password',
-		COLUMN_ROLE = 'role';
+        COLUMN_EMAIL = 'email',
+		COLUMN_ROLE = 'role',
+        COLUMN_TYPE = 'type',
+        COLUMN_ATTACKED = 'attacked';
 
 
 	/** @var Nette\Database\Context */
@@ -65,29 +70,18 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	 * @return void
 	 * @throws DuplicateNameException
 	 */
-	public function add($username, $password)
+	public function add($username, $password, $email)
 	{
 		try {
 			$this->database->table(self::TABLE_NAME)->insert(array(
 				self::COLUMN_NAME => $username,
 				self::COLUMN_PASSWORD_HASH => Passwords::hash($password),
+                                self::COLUMN_EMAIL => $email,
 			));
 		} catch (Nette\Database\UniqueConstraintViolationException $e) {
 			throw new DuplicateNameException;
 		}
-	}
-        
-        public function getUserById($id){
-            return $this->database->table('users')->where('id_user ?', $id)->fetch();
-        }
-        
-        public function getUserLevelById($id){
-            return $this->database->table('players')->where('id_player ?', $id)->select('experiences')->fetch();
-        }
-        
-        public function getUserGearById($id){
-            return $this->database->table('gears')->where('id_gear ?', $id)->fetch();
-        }
+	} 
 
 }
 

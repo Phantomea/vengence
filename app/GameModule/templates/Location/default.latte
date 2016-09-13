@@ -1,0 +1,19 @@
+{* Latte template *}
+
+{block content}
+{if $locations}
+    <div class="location-list">
+        {foreach $locations as $loc}
+            <div class="location-item">
+                <div><h2>{$loc->name}</h2></div>
+                <div>
+                    <img src="{$basePath}/{$loc->avatar}" />
+                </div>
+                <div>
+                    <a  n:href="enterLocation! $loc->location_id"><button class="enter-button">Enter</button></a>
+                </div>
+                <div>Required level: {$loc->minimum_level}</div>
+            </div>
+        {/foreach}
+    </div>
+{/if}    

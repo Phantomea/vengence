@@ -1,0 +1,545 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"a",
+				"alert"
+			],
+			[
+				"Kč",
+				"Kč"
+			],
+			[
+				"li",
+				"listok"
+			],
+			[
+				"zl",
+				"zlavaPredmetov"
+			],
+			[
+				"zlav",
+				"zlavaPredmetov"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"odn",
+				"odznak"
+			],
+			[
+				"margin",
+				"margin"
+			],
+			[
+				"K",
+				"Kč"
+			],
+			[
+				"get",
+				"getDate"
+			],
+			[
+				"margi",
+				"margin"
+			],
+			[
+				"datu",
+				"datumDo"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
+				"pri",
+				"prirazka"
+			],
+			[
+				"pocet",
+				"pocetSlev"
+			],
+			[
+				"backgr",
+				"background-color"
+			],
+			[
+				"background",
+				"background-image"
+			],
+			[
+				"las",
+				"lastId"
+			],
+			[
+				"pd_preparat",
+				"pd_preparation_atc"
+			],
+			[
+				"tabl",
+				"table_name"
+			],
+			[
+				"mysq",
+				"mysql_error"
+			],
+			[
+				"emp",
+				"employees"
+			],
+			[
+				"mysql_num",
+				"mysql_num_rows"
+			],
+			[
+				"Kontak",
+				"Kontaktní"
+			],
+			[
+				"creat",
+				"createNewEmployee"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"id",
+				"id_key"
+			],
+			[
+				"show",
+				"showMenu"
+			],
+			[
+				"fs",
+				"font-size"
+			],
+			[
+				"font-s",
+				"font-size"
+			],
+			[
+				"con",
+				"contact_mail"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"thi",
+				"third_programmer"
+			],
+			[
+				"th",
+				"third_programmer"
+			],
+			[
+				"applicatio",
+				"application_price"
+			],
+			[
+				"strto",
+				"strtotime"
+			],
+			[
+				"exec",
+				"execute"
+			],
+			[
+				"visi",
+				"visible"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"border-r",
+				"border-right"
+			],
+			[
+				"border-s",
+				"border-spacing"
+			],
+			[
+				"tex",
+				"text-align"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"wid",
+				"width"
+			],
+			[
+				"p",
+				"placeholder	Attr"
+			],
+			[
+				"inlin",
+				"inline-block"
+			],
+			[
+				"ta",
+				"text-align"
+			],
+			[
+				"bgc",
+				"background-color"
+			],
+			[
+				"list",
+				"list-style-type"
+			],
+			[
+				"inl",
+				"inline-block"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 35.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 400.0
+	},
+	"console":
+	{
+		"height": 146.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '2915d1851351e5ee549c20394736b442' + '8bc59f460fa1548d1514676163dafc88'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/xampper/htdocs/clear"
+	],
+	"file_history":
+	[
+		"/C/Users/Miroslav Žiaran/Desktop/babel-sublime-master/JavaScript (Babel).sublime-syntax",
+		"/C/xampper/htdocs/react/index.html",
+		"/C/xampper/htdocs/react/helloworld.html",
+		"/D/Miro/xampp/htdocs/uskvbl/components/com_tables/helper.php",
+		"/C/xampp/htdocs/uskvbl/configuration.php",
+		"/D/Miro/xampp/htdocs/uskvbl/components/com_autocomplete/mecha.php",
+		"/D/Miro/xampp/htdocs/web/components/com_tables/helper.php",
+		"/D/Miro/xampp/htdocs/web/configuration.php",
+		"/D/Abaku/AbakuGame.Web.Web/css/style.css",
+		"/C/Users/Miroslav Žiaran/Desktop/Nikolaj/css/styl.css",
+		"/C/Users/Miroslav Žiaran/Desktop/fizkova/historie.html",
+		"/C/Users/Miroslav Žiaran/Desktop/Nikolaj/program.html",
+		"/C/Users/Miroslav Žiaran/Desktop/Tomáš/kontakt.html",
+		"/C/Users/Miroslav Žiaran/Desktop/Nikolaj/predaj.html",
+		"/C/Users/Miroslav Žiaran/Desktop/Nikolaj/manga.html",
+		"/C/Users/Miroslav Žiaran/Desktop/Nikolaj/index.html",
+		"/C/Users/Miroslav Žiaran/Desktop/Nikolaj/anime.html",
+		"/D/SQL",
+		"/C/Users/Miroslav Žiaran/Desktop/Tomáš/cenik.html",
+		"/C/Users/Miroslav Žiaran/Desktop/Tomáš/fotogalerie.html",
+		"/C/Users/Miroslav Žiaran/Desktop/Tomáš/ochate.html",
+		"/C/Users/Miroslav Žiaran/Desktop/Tomáš/index.html",
+		"/C/Users/Miroslav Žiaran/Desktop/Tomáš/styl.css",
+		"/C/wamp64/www/web/templates/uskvbl_v01/index.html",
+		"/C/wamp64/www/web/templates/uskvbl_v01/index.php",
+		"/C/Users/Miroslav Žiaran/Desktop/Tomáš/glDatePicker.js",
+		"/C/Users/Miroslav Žiaran/Desktop/Tomáš/glDatePicker.min.js",
+		"/C/Users/Miroslav Žiaran/Desktop/fizkova/vstupenky.html",
+		"/C/Users/Miroslav Žiaran/Desktop/fizkova/index.html",
+		"/C/Users/Miroslav Žiaran/Desktop/fizkova/css/style.css",
+		"/C/Users/Miroslav Žiaran/Desktop/fizkova/soupiska.html",
+		"/C/Users/Miroslav Žiaran/Downloads/helper.php",
+		"/C/Users/Miroslav Žiaran/Desktop/fizkova/mapa.html",
+		"/C/wamp64/www/system/views/css/style.css",
+		"/C/wamp64/www/system/views/employees/index.php",
+		"/C/wamp64/www/system/views/layout.php",
+		"/C/wamp64/www/system/controllers/employees_controller.php",
+		"/C/wamp64/www/system/models/employees.php",
+		"/C/wamp64/www/system/index.php",
+		"/C/wamp64/www/system/controllers/pages_controller.php",
+		"/C/wamp64/www/system/controllers/posts_controller.php",
+		"/C/wamp64/www/system/controllers/erp_controller.php",
+		"/C/wamp64/apps/phpmyadmin4.5.2/setup/config.php",
+		"/C/wamp64/www/system/models/erp.php",
+		"/D/Miro/xampp/phpMyAdmin/libraries/database_interface.lib.php",
+		"/D/Miro/xampp/htdocs/webis/components/com_tables/helper.php",
+		"/C/Users/Miroslav Žiaran/Desktop/colorbox-master/example1/index.html",
+		"/C/Users/Miroslav Žiaran/Desktop/colorbox-master/jquery.colorbox.js",
+		"/C/Users/Miroslav Žiaran/Desktop/colorbox-master/example3/colorbox.css",
+		"/D/Miro/xampp/htdocs/web/.htaccess",
+		"/D/Miro/xampp/htdocs/web/templates/uskvbl_v01/js/export.js",
+		"/C/Users/Miroslav Žiaran/Desktop/zaloha-query.php",
+		"/C/wamp64/bin/php/php5.6.16/php.ini",
+		"/C/Users/Miroslav Žiaran/Desktop/colorbox-master/example3/index.html",
+		"/C/Users/Miroslav Žiaran/Desktop/colorbox-master/example1/colorbox.css",
+		"/C/Users/Miroslav Žiaran/Desktop/colorbox-master/jquery.colorbox-min.js",
+		"/D/Miro/xampp/htdocs/web/components/com_tables/tables.php",
+		"/D/Miro/xampp/htdocs/web/components/com_autocomplete/js/autocomplete.js",
+		"/C/wamp64/www/web/.htaccess",
+		"/C/wamp64/www/web/configuration.php",
+		"/C/wamp64/www/orig/components/com_tables/helper.php",
+		"/C/wamp64/www/web/components/com_tables/helper.php",
+		"/C/wamp64/www/web/components/com_tables/tables.php",
+		"/C/wamp64/www/web/components/com_tables/controller.php",
+		"/C/wamp64/apps/phpmyadmin4.5.2/config.inc.php",
+		"/C/wamp64/www/system/views/employees/show.php",
+		"/C/wamp64/bin/mysql/mysql5.7.9/my.ini",
+		"/C/wamp64/bin/mysql/mysql5.7.9/my-default.ini",
+		"/C/wamp64/bin/php/php7.0.0/php.ini",
+		"/C/wamp64/bin/apache/apache2.4.17/wampserver.conf",
+		"/C/wamp64/bin/apache/apache2.4.17/conf/charset.conv",
+		"/C/wamp64/scripts/config.inc.php",
+		"/C/wamp64/apps/phpmyadmin4.5.2/config.sample.inc.php",
+		"/C/Users/Miroslav Žiaran/Desktop/zaloha-employees.php",
+		"/C/wamp64/www/system/views/tables/index.php",
+		"/C/wamp64/www/system/views/tables/show.php",
+		"/C/wamp64/www/system/routes.php",
+		"/C/wamp64/www/system/views/pages/home.php",
+		"/C/wamp64/www/system/connection.php",
+		"/C/wamp64/www/system/views/posts/show.php",
+		"/C/wamp64/www/system/views/posts/index.php",
+		"/C/Users/Miroslav Žiaran/Desktop/xxxx.html",
+		"/C/wamp64/www/system/models/post.php",
+		"/C/wamp64/www/system/controllers/tables_controller.php"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"14.2",
+			"hour_wage",
+			"}",
+			"/}",
+			"13",
+			"csv_base",
+			":')",
+			":'",
+			"->customer",
+			"customers",
+			"id_customers",
+			"$username",
+			"DATE NOT NULL",
+			" BYTE",
+			"VARCHAR2",
+			"BYTE) NOT NULL",
+			"f4cc7b",
+			"f4cc7a",
+			":hover",
+			"ec971f",
+			"rgb(204, 204, 204);",
+			"ec971f",
+			"f4cc7a",
+			"ec971f",
+			"f4cc7a",
+			"JPEG",
+			" - ",
+			"-",
+			"input",
+			"date",
+			"format",
+			"getElementsByName",
+			" - ",
+			"</a></td>",
+			"<td>",
+			"<td >",
+			"class='nastym'",
+			"nowrap style='font-weight:bold;text-align:left'   id='tabulkaTym'",
+			"style='font-weight:bold'  title='1'",
+			"class='inkas'",
+			"class='dt'",
+			"class='vstrel'",
+			" nowrap style='font-weight:bold;text-align:left'  class='tym' id='tabulkaTym'",
+			"class='poradi'",
+			"class=''",
+			"lekovaForma",
+			"getTableData",
+			"baleni",
+			"balni",
+			" class=\"center post\"",
+			" class=\"center\"",
+			" class=\"right\"",
+			"$html .= '",
+			"mainTable",
+			"settings.get",
+			"width",
+			"img",
+			"set",
+			"width",
+			"img",
+			"710",
+			"colorbox",
+			"id=\"colorbox\"",
+			"absolute",
+			"700",
+			"7000",
+			"70",
+			"700",
+			"cboxContent",
+			"700",
+			"pdc_drug_form_drug_form_web",
+			"TERMINATED",
+			"autoload",
+			"getAutoLoadCSVForTable",
+			"autoload",
+			"utf8",
+			"utf8mb4",
+			"autoload",
+			"if (!$result) {\n									$req = $db->query(\"INSERT INTO employees (surname, lastname, position, platform, level, team, contact_mail, work_mail, phone, address) VALUES ('$surname', '$lastname', '$position', '$platform', '$level', '$team', '$contact_mail','$work_mail','$phone', '$address') \"); \n								} else {\n									$req = $db->query(\"UPDATE employees SET surname = '$surname', lastname = '$lastname', position = '$position', platform = '$platform', level = '$level', team = '$team', contact_mail = '$contact_mail', work_mail = '$work_mail', phone = '$phone', address = '$address' WHERE id = '$id' \");\n								}",
+			"latin",
+			"tr:hov",
+			"mainTable",
+			"mainTableä",
+			"hover",
+			"$db = Db::getInstance();\n			$req = $db->prepare('INSERT INTO erp (deadline, application_name, platform, customer, application_price, first_programmer, second_programmer, third_programmer, fourth_programmer, fifth_programmer, sixth_programmer\n				VALUES (:deadline, :application_name, :platform, :customer, :application_price, :first_programmer, :second_programmer, :third_programmer, :fourth_programmer, :fifth_programmer, :sixth_programmer) ');\n			$req->execute();\n			$message = '<p> Uzivatel byl pridan </p>';\n			return $message;",
+			"post"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"if (!$result) {\n									$req = $db->query(\"INSERT INTO employees (surname, lastname, position, platform, level, team, contact_mail, work_mail, phone, address) VALUES ('$surname', '$lastname', '$position', '$platform', '$level', '$team', '$contact_mail','$work_mail','$phone', '$address') \"); \n								} else {\n									$req = $db->query(\"UPDATE employees SET surname = '$surname', lastname = '$lastname', position = '$position', platform = '$platform', level = '$level', team = '$team', contact_mail = '$contact_mail', work_mail = '$work_mail', phone = '$phone', address = '$address' WHERE id = '$id' \");\n								}",
+			"$db = Db::getInstance();\n			$req = $db->prepare('INSERT INTO erp (deadline, application_name, platform, customer, application_price, first_programmer, second_programmer, third_programmer, fourth_programmer, fifth_programmer, sixth_programmer\n				VALUES (:deadline, :application_name, :platform, :customer, :application_price, :first_programmer, :second_programmer, :third_programmer, :fourth_programmer, :fifth_programmer, :sixth_programmer) ');\n			$req->execute();\n			$message = '<p> Uzivatel byl pridan </p>';\n			return $message;"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "clear.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

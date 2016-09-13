@@ -1,249 +1,58 @@
-html {
-    height: 100%;
-}
+html,
 body {
+    width: 100%;
     height: 100%;
-    font-family: 'Roboto';
-    background: url('../images/bg.png');
-    background-repeat: repeat;
 }
 
-header {
-    display: flex;
-    width: 1000px;
-    margin: 0 auto;
-    padding: 10px;
+body {
+        font-family: 'Roboto','Cambria',sans-serif;
+	font-size: 100%;
+        font-weight: 100;
+	line-height: 1.6;
+	color: #fff;
+	background: #272727;
 }
 
-/* -------------- ICONS ------------- */
-
-a.icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #ddd;
-    font-size: 25px;
-    width: 60px;
-    height: 60px;
-    border: 5px solid #ddd;
-    border-radius: 50%;
-    text-decoration: none;
+h1 {
+	color: #fff;
+        font-weight: bold;
 }
 
-a.icon:hover {
-    color: #752e2e;
-    border: 5px solid #752e2e;
-}
-a.icon.logout {
-    color: #fff;
-    background-color: #e74c3c;
-    border: 5px solid #e74c3c;
-}
-
-a.icon.logout:hover {
-    border-color: #c0392b;
+#ajax-spinner {
+	margin: 15px 0 0 15px;
+	padding: 13px;
+	background: white url('../images/spinner.gif') no-repeat 50% 50%;
+	font-size: 0;
+	z-index: 123456;
+	display: none;
 }
 
-a.icon.help {
-    color: #fff;
-    background-color: #3498db;
-    border: 5px solid #3498db;
+div.flash {
+	color: black;
+	background: #FFF9D7;
+	border: 1px solid #E2C822;
+	padding: 1em;
+	margin: 1em 0;
 }
 
-a.icon.help:hover {
-    border-color: #2980b9;
+a[href^="#error:"] {
+	background: red;
+	color: white;
 }
 
-a.icon.gun {
-    background-image: url('../images/icons/gun-grey.png');
-    background-repeat: no-repeat;
-    background-position: center center;
+form th, form td {
+	vertical-align: top;
 }
 
-a.icon.gun:hover {
-    background-image: url('../images/icons/gun-red.png');
-    border: 5px solid #752e2e;
+form th {
+	text-align: right;
 }
 
-a.icon.second-gun {
-    background-image: url('../images/icons/gun2-grey.png');
-    background-repeat: no-repeat;
-    background-position: center center;
+form .required label {
+	font-weight: bold;
 }
 
-a.icon.trophy:hover {
-    background-image: url('../images/icons/trophy-grey.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.trophy:hover {
-    background-image: url('../images/icons/trophy-red.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.hack:hover {
-    background-image: url('../images/icons/hack-grey.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.hack:hover {
-    background-image: url('../images/icons/hack-red.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.dollar:hover {
-    background-image: url('../images/icons/dollar-grey.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.dollar:hover {
-    background-image: url('../images/icons/dollar-red.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.buy:hover {
-    background-image: url('../images/icons/buy-grey.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.buy:hover {
-    background-image: url('../images/icons/buy-red.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.diamond:hover {
-    background-image: url('../images/icons/diamond-grey.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.diamond:hover {
-    background-image: url('../images/icons/diamond-red.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.shield:hover {
-    background-image: url('../images/icons/shield-grey.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.shield:hover {
-    background-image: url('../images/icons/shield-red.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.package:hover {
-    background-image: url('../images/icons/package-grey.png');
-    border: 5px solid #752e2e;
-}
-
-a.icon.package:hover {
-    background-image: url('../images/icons/package-red.png');
-    border: 5px solid #752e2e;
-}
-
-/* --------------- END OF ICONS ------------------*/
-
-.container {
-    width: 1000px;
-}
-
-.avatar,
-.player-info {
-    display: inline-block;
-    vertical-align: middle;
-}
-
-.avatar {
-    width: 120px;
-}
-
-.player-info {
-    width: 200px;
-}
-
-.profile-icons {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-around;
-    align-items: center;
-    width: 780px;
-    text-align: center;
-}
-
-.avatar img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    border: 5px solid #ddd;
-    padding: 0;
-    margin: 0;
-}
-
-.player-name {
-    color: #752e2e;
-    font-size: 1.2em;
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.player-level {
-    color: #c5c3c4;
-    padding: 0 0 5px 5px;
-}
-
-.player-hp-bar,
-.player-exp-bar {
-    position: relative;
-    font-weight: bold;
-    text-align: center;
-    border-radius: 5px;
-    padding: 3px 0px;
-    margin-bottom: 5px;
-    z-index: -999;
-}
-
-.player-hp-bar {
-    color: #fff;
-    width: 100%;
-    background-color: #c0392b;
-    margin-left: -10px;
-}
-
-.player-exp-bar {
-    color: #fff;
-    width: 100%;
-    background-color: #bdc3c7;
-    margin-left: -25px;
-}
-
-/* ------------ main content ----------- */
-
-main {
-    min-height: 80%;
-    display: flex;
-    width: 1000px;
-    text-align: center;
-    margin: 0 auto;
-    outline: 1px solid;
-}
-
-/* menu */
-
-.menu {
-    width: 60px;
-    outline: 1px solid red;
-}
-
-.menu ul {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-}
-
-.menu ul li {
-    margin-top: 10px;
+form .error {
+	color: #D00;
+	font-weight: bold;
 }

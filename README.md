@@ -1,2 +1,0 @@
-# vengence
-Amateur browser game

@@ -1,0 +1,21 @@
+{* Latte template *}
+
+{block content}
+<div id="players-table">
+    <table>
+        <thead>
+            <th>Username</th>
+            <th>Type</th>
+            <th>&nbsp;</th>
+        </thead>
+        <tbody>
+            {foreach $enemies as $en}
+                <tr>
+                    <td>{$en->username}</td>
+                    <td>{$en->type}</td>
+                    <td><a n:href="attack! $en->user_id">Attack</a></td>
+                </tr>
+            {/foreach}
+        </tbody>
+    </table>
+</div>

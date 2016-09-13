@@ -1,0 +1,95 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <title>{ifset title}{include title|striptags} | {/ifset}Nette Sandbox</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="{$basePath}/css/gameModule.css">
+    
+    <meta name="viewport" content="width=device-width">
+    {block head}{/block}
+</head>
+
+<body>
+    <div id="top_panel">
+        <div id="profile_image">
+            <img src="{$basePath}/{$player->avatar}" />
+            <div id="profile_info">
+                <p>{$player->username}</p>
+                <p>Level {$player->user_stat->level}</p>
+                {if $player->type=='1'}
+                    <p style="color:#e74c3c;">Ghoul</p>
+                {else}
+                    <p style="color:#2980b9;">Investigator</p>
+                {/if}
+            </div>
+        </div>
+        <div class="bar">
+            <div class="progress">
+                <div class="bar-number">HP: {$player->user_stat->health} / {$player->user_stat->max_health}</div>
+                <div class="progress-bar-danger" role="progressbar" aria-valuenow="{$player->user_stat->health}" aria-valuemin="0" aria-valuemax="{$player->user_stat->max_health}" style="width:{ ($player->user_stat->health / $player->user_stat->max_health) * 100}%"></div>
+            </div>
+            <div class="progress">
+                <div class="bar-number">EXP: {$player->user_stat->experiences} / {$player->user_stat->level * 150}</div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="{$player->user_stat->experiences}" aria-valuemin="0" aria-valuemax="{$player->user_stat->level * 150}" style="width:{($player->user_stat->experiences / ($player->user_stat->level * 150))*100|number:0:'.':''}%"></div>
+            </div>
+        </div>
+        <div>
+        </div>
+    </div>
+    <main>
+        <div id="menu">
+            {if $menuItems}
+                <nav>
+                    <ul>
+                        {foreach $menuItems as $mi}
+                            <li><a n:href="{$mi->link}" ><i class="{$mi->icon_class_name}" aria-hidden="true" ></i></a></li>
+                        {/foreach}
+                    </ul>
+                </nav>
+            {/if}
+        </div>
+        
+        <div id="content">
+            <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+            {include content}
+            
+        </div>
+        
+    </main>
+
+    {block scripts}
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="{$basePath}/js/nette.ajax.js"></script> {* Nette Ajax depens on jQuery *}
+    <script src="{$basePath}/js/main.js"></script>
+    <script>
+        $('.weapon-image').popover({
+            html: true,
+            placement: "right",
+            trigger: "hover",
+            template: '<div class="popover" role="tooltip" style="padding: 5px;margin-top: 0px;"><h3 class="popover-title"></h3><div class="popover-content"></div></div>',
+            delay: {
+                show: 200,
+                hide: 0
+            }
+        });
+    </script>
+    <script>
+        $(function () {
+            $.nette.init();
+        });
+    </script>
+    {/block}
+</body>
+</html>

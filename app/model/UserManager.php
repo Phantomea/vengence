@@ -14,7 +14,6 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 {
 	const
 		TABLE_NAME = 'user',
-        TABLE_USER_STAT = 'user_stat',
 		COLUMN_ID = 'user_id',
 		COLUMN_NAME = 'username',
 		COLUMN_PASSWORD_HASH = 'password',
@@ -82,6 +81,31 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 			throw new DuplicateNameException;
 		}
 	} 
+
+	public function getUsers()
+	{
+		return $this->$db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
+	}
+
+	public function getUser($id)
+	{
+		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+	}
+
+	public function setUser($data)
+	{
+		return $this->$db->table(self::TABLE_NAME)->insert($data);
+	}
+
+	public function updateUser($data)
+	{
+		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+	}
+
+	public function deleteUser($id) 
+	{
+		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+	}
 
 }
 

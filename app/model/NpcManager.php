@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Nette;
 use App\Model;
-use Nette\database\context;
+use Nette\Database\Context;
 
 class NpcManager extends Nette\Object{
 
@@ -22,21 +22,28 @@ class NpcManager extends Nette\Object{
 		$this->db = $db;
 	}
 
-	public function getNpcs (){
+	public function getNpcs ()
+	{
 		return this->$db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
 	}
 
-	public function getNpc($id){
+	public function getNpc($id)
+	{
 		return this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
 	}
 
-	public function deleteNpc($id) {
+	public function deleteNpc($id) 
+	{
 		return this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
 	}
-	public function setNpc ($data){
+
+	public function setNpc ($data)
+	{
 		return this->$db->table(self::TABLE_NAME)->insert($data);
 	}
-	public function updateNpc($data) {
+
+	public function updateNpc($data)
+	{
 		return this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["npc_id"])->update($data);
 	}
 }

@@ -6,44 +6,39 @@ use Nette;
 use App\Model;
 use Nette\Database\Context;
 
-class NpcManager extends Nette\Object{
+class ArmorManager extends Nette\Object{
 
 	protected $db;
 
-	const TABLE_NAME = 'npc',
-			COLUMN_ID = 'npc_id',
-			COLUMN_NAME = 'name',
-			COLUMN_AVATAR = 'avatar',
-			COLUMN_FIRST = 'first_damage',
-			COLUMN_SECOND = 'second_damage',
-			COLUMN_STATE = 'state_id';
+	const TABLE_NAME = 'armor',
+			COLUMN_ID = 'armor_id';
 
 	public function __constructor(Context $db)
 	{
 		$this->db = $db;
 	}
 
-	public function getNpcs()
+	public function getArmors ()
 	{
 		return $this->$db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
 	}
 
-	public function getNpc($id)
+	public function getArmor($id)
 	{
 		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
 	}
 
-	public function setNpc($data)
+	public function setArmor($data)
 	{
 		return $this->$db->table(self::TABLE_NAME)->insert($data);
 	}
 
-	public function updateNpc($data)
+	public function updateArmor($data)
 	{
 		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
 	}
 
-	public function deleteNpc($id) 
+	public function deleteArmor($id) 
 	{
 		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
 	}

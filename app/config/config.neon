@@ -21,6 +21,9 @@ session:
 
 services:
 	- App\Model\UserManager
+	- App\Model\MenuManager
+	- App\Model\MenuItemManager
+	- App\Model\MenuMenuItemManager
 	- App\Forms\FormFactory
 	- App\Model\AuthorizatorFactory
 	- App\Forms\SignFormFactory

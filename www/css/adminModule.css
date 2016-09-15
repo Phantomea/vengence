@@ -1,0 +1,202 @@
+html,
+body {
+  background-color: #eee;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: #e74c3c;
+  font-size: 14px;
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+}
+
+a:hover {
+  color: #c0392b;
+}
+
+table {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+table thead {
+    color: #fff;
+    background-color: #2ecc71;
+    font-weight: bold;
+}
+
+table thead th {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+table tr td,
+table th {
+    padding: 10px;
+}
+
+table tr td {
+    background-color: #fff;
+    border-bottom: 1px solid #eee;
+}
+
+table tbody {
+    box-shadow: 0px 1px 3px #bababa;
+}
+
+/* IDs */
+
+#flex-body {
+  height: 100%;
+  display: -ms-flexbox;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-box;
+  display: box;
+  
+  -ms-flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -moz-box-orient: horizontal;
+  -ms-box-orient: horizontal;
+  box-orient: horizontal;
+}
+
+
+#left-panel {
+    min-width: 200px;
+    max-width: 300px;
+    background: #fff;
+    width: 100px;
+    -ms-flex: 0 100px;
+    -webkit-box-flex:  0;
+    -moz-box-flex:  0;
+    -ms-box-flex:  0;
+    box-flex:  0;  
+    box-shadow: 1px 0px 5px #bababa;
+}
+
+#profile-panel {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  background-color: #2ecc71;
+  padding: 5px;
+  line-height: 1;
+}
+
+#profile-panel a {
+  color: #219452;
+}
+
+#profile-panel a:hover {
+  color: #219452;
+}
+
+#profile-image img{
+  width: 50px;
+  height: 50px;
+  border: 0px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+#menu ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#menu ul li {
+}
+
+#menu a {
+    display: block;
+    color: #bababa;
+    font-weight: normal;
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+#menu a:hover {
+    color: #fff;
+    background-color: #219452;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#content {
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    box-flex: 1;
+    padding: 10px;
+}
+
+/* Classes */
+
+.search-panel {
+}
+
+.search-panel form {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.search-panel table {
+    width: 100%;
+    border-spacing: 0;
+}
+
+.search-panel table tbody {
+    box-shadow: 0px 0px 0px;
+}
+
+.search-panel table tr td {
+    padding: 0;
+    background-color: transparent;
+}
+
+.search-panel table tr td:first-child {
+    width: 95%;
+}
+
+.search-panel input,
+.search-panel select,
+.search-panel button {
+    width: 100%;
+}
+
+.search-panel table tr td input {
+    padding: 10px;
+    border: 1px solid #bababa;
+    border-right: 0;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    outline: 0;
+}
+
+.search-panel table tr td button {
+    color: #fff;
+    background-color: #2ecc71; 
+    padding: 10px;
+    border: 1px solid #219452;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.users-info-panel {
+    width: 200px;
+}
+
+/* Overriding bootstrap */
+
+.dropdown-header {
+    padding: 0;
+    margin: 0;
+}

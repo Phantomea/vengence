@@ -23,13 +23,13 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
         COLUMN_ATTACKED = 'attacked';
 
 
-	/** @var Nette\Database\Context */
-	private $database;
+	/** @var Nette\database\Context */
+	private $db;
 
 
-	public function __construct(Nette\Database\Context $database)
+	public function __construct(Nette\Database\Context $db)
 	{
-		$this->database = $database;
+		$this->db = $db;
 	}
 
 
@@ -42,7 +42,7 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	{
 		list($username, $password) = $credentials;
 
-		$row = $this->database->table(self::TABLE_NAME)->where(self::COLUMN_NAME, $username)->fetch();
+		$row = $this->db->table(self::TABLE_NAME)->where(self::COLUMN_NAME, $username)->fetch();
 
 		if (!$row) {
 			throw new Nette\Security\AuthenticationException('The username is incorrect.', self::IDENTITY_NOT_FOUND);
@@ -72,40 +72,72 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	public function add($username, $password, $email)
 	{
 		try {
-			$this->database->table(self::TABLE_NAME)->insert(array(
+			$this->db->table(self::TABLE_NAME)->insert(array(
 				self::COLUMN_NAME => $username,
 				self::COLUMN_PASSWORD_HASH => Passwords::hash($password),
                                 self::COLUMN_EMAIL => $email,
 			));
-		} catch (Nette\Database\UniqueConstraintViolationException $e) {
+		} catch (Nette\db\UniqueConstraintViolationException $e) {
 			throw new DuplicateNameException;
 		}
 	} 
 
 	public function getUsers()
 	{
-		return $this->$db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
+		return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
 	}
 
 	public function getUser($id)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
 	public function setUser($data)
 	{
-		return $this->$db->table(self::TABLE_NAME)->insert($data);
+		return $this->db->table(self::TABLE_NAME)->insert($data);
 	}
 
 	public function updateUser($data)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
 	}
 
 	public function deleteUser($id) 
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
 	}
+        
+        /* Additional queries */
+        
+        public function searchUserByName($name)
+        {
+                return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_NAME.'like ?', '%'.$name.'%')->fetchAll();
+        }
+        
+        public function numberOfUsers()
+        {
+            return $this->db->table(self::TABLE_NAME)->count();
+        }
+        
+        public function numberOfAdministrators()
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ROLE, 'admin')->count();
+        }
+        
+        public function numberOfModerators()
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ROLE, 'moderator')->count();
+        }
+        
+        public function numberOfPlayers()
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ROLE, 'player')->count();
+        }
+        
+        public function numberOfBannedUsers()
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ROLE, 'banned')->count();
+        }
 
 }
 

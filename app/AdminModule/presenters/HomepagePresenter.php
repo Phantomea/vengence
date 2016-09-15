@@ -8,7 +8,18 @@ use Nette\Application\UI\Form;
 
 final class HomepagePresenter extends BasePresenter
 {
-
+    public $types = [
+                1 => "Ghoul",
+                2 => "Investigator"
+            ];
+    
+    public $roles = [
+        "player" => "Player",
+        "moderator" => "Moderator",
+        "banned" => "Banned",
+        "admin" => "Admin"
+    ];
+    
 	public function renderDefault()
 	{
             $numberOfUsers = $this->userManager->numberOfUsers();
@@ -26,12 +37,18 @@ final class HomepagePresenter extends BasePresenter
             // \Tracy\Debugger::barDump($users);
 	}
         
+        public function renderResult($value)
+        {
+            $result = $this->userManager->searchUserByNameOrId($value);
+            $this->template->result = $result;
+            $this->template->value = $value;
+            $this["userSearchForm"]->setDefaults(array(
+                "word" => $value
+            ));
+        }
+        
         protected function createComponentUserSearchForm()
         {
-            $choices = [
-                0 => 'ID',
-                1 => 'Name'
-            ];
             $form = new Form();
             $form->addText("word", "Word")
                     ->setRequired("Type something here!")
@@ -58,6 +75,32 @@ final class HomepagePresenter extends BasePresenter
                     ->setRequired("Enter email address")
                     ->addRule(Form::EMAIL, "Bad pattern of email address")
                     ->setAttribute("placeholder", "Email");
+            $form->addSelect("type", "Type")
+                    ->setItems($types);
+            $form->addSelect("role", "Role")
+                    ->setItems($types);
+        }
+        
+        public function searchUser($form, $values)
+        {
+            if($form["search"]->isSubmittedBy())
+            {
+                if($form->isValid())
+                {
+                    $this->redirect("Result", $values["word"]);
+                }
+            }
+        }
+        
+        public function addUser($form, $values)
+        {
+            if($form["add"]->isSubmittedBy())
+            {
+                if($form->isValid())
+                {
+                    
+                }
+            }
         }
 
 }

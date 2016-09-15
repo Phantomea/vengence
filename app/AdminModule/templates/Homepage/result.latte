@@ -1,0 +1,47 @@
+{* Latte template *}
+
+{block content}
+<div class="search-panel">
+    <form n:name=userSearchForm>
+        <table>
+            <tr>
+                <td><input n:name=word autocomplete="off"/></td>
+                <td><button n:name=search><span class="glyphicon glyphicon-search"></span></button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+{if $result}
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Birth date</th>
+            <th>Role</th>
+            <th>Type</th>
+        </thead>
+        <tbody>
+            {foreach $result as $res}
+                <tr>
+                    <td>{$res->user_id}</td>
+                    <td>{$res->username}</td>
+                    <td>{$res->email}</td>
+                    <td>{$res->birth_date}</td>
+                    <td>{$res->role}</td>
+                    <td>
+                        {if $res->type == 1}
+                            Ghoul
+                        {else}
+                            Investigator
+                        {/if}
+                    </td>
+                </tr>
+            {/foreach}
+        </tbody>
+    </table>
+{else}
+    <div>
+        No results found for <strong>"{$value}"</strong>!
+    </div>
+{/if}

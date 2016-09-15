@@ -23,26 +23,26 @@ class LocationManager extends Nette\Object{
 
 	public function getLocations()
 	{
-		return $this->$db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
+		return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
 	}
 
 	public function getLocation($id)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
 	}
 
 	public function setLocation($data)
 	{
-		return $this->$db->table(self::TABLE_NAME)->insert($data);
+		return $this->db->table(self::TABLE_NAME)->insert($data);
 	}
 
 	public function updateLocation($data)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
 	}
 
 	public function deleteLocation($id) 
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
 	}
 }

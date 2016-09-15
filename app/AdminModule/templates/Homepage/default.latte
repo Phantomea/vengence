@@ -1,68 +1,44 @@
 {* Latte template *}
 
 {block content} 
-<div id="flex-body">
-    <div id="left-panel">
-        <div id="profile-panel">
-            <div id="profile-image">
-                <img src="{$basePath}/{$player->avatar}" alt="profile icon" />
-            </div>
-            <div id="profile-name">
-                {$player->username} <br>
-                <a n:href=Profile {$player->user_id}>Show profile</a>
-            </div>
-        </div>
-        <div id=menu>
-            <nav>
-                <ul>
-                    {foreach $menu->related('menu_menu_item') as $men}
-                        <li><a n:href="{$men->menu_item->link}">{$men->menu_item->name}</a></li>
-                    {/foreach}
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <div id=content>
-        <div class="search-panel">
-            <form n:name=userSearchForm>
-                <table>
-                    <tr>
-                        <td><input n:name=word autocomplete="off"/></td>
-                        <td><button n:name=search><span class="glyphicon glyphicon-search"></span></button></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-        <div class="users-info-panel">
-            <div>
-                <table>
-                    <thead>
-                        <th colspan="2">Number of users</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>All users</strong></td>
-                            <td>{$numberOfUsers}</td>
-                        </tr>
-                        <tr>
-                            <td>Administrators</td>
-                            <td>{$numberOfAdministrators}</td>
-                        </tr>
-                        <tr>
-                            <td>Moderators</td>
-                            <td>{$numberOfModerators}</td>
-                        </tr>
-                        <tr>
-                            <td>Players</td>
-                            <td>{$numberOfPlayers}</td>
-                        </tr>
-                        <tr>
-                            <td>Banned users</td>
-                            <td>{$numberOfBannedUsers}</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<div class="search-panel">
+    <form n:name=userSearchForm>
+        <table>
+            <tr>
+                <td><input n:name=word autocomplete="off"/></td>
+                <td><button n:name=search><span class="glyphicon glyphicon-search"></span></button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div class="users-info-panel">
+    <div>
+        <table>
+            <thead>
+                <th colspan="2">Number of users</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>All users</strong></td>
+                    <td>{$numberOfUsers}</td>
+                </tr>
+                <tr>
+                    <td>Administrators</td>
+                    <td>{$numberOfAdministrators}</td>
+                </tr>
+                <tr>
+                    <td>Moderators</td>
+                    <td>{$numberOfModerators}</td>
+                </tr>
+                <tr>
+                    <td>Players</td>
+                    <td>{$numberOfPlayers}</td>
+                </tr>
+                <tr>
+                    <td>Banned users</td>
+                    <td>{$numberOfBannedUsers}</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </div>

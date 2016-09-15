@@ -20,26 +20,33 @@ class ArmorManager extends Nette\Object{
 
 	public function getArmors()
 	{
-		return $this->$db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
+		return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
 	}
 
 	public function getArmor($id)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
 	}
 
-	public function setArmor($data)
+	public function setArmor()
 	{
-		return $this->$db->table(self::TABLE_NAME)->insert($data);
+		return $this->db->table(self::TABLE_NAME)->insert();
 	}
 
 	public function updateArmor($data)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
 	}
 
 	public function deleteArmor($id) 
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
 	}
+        
+        /* Additional Functions */
+        
+        public function getLastArmor()
+        {
+            return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID." desc")->fetch();
+        }
 }

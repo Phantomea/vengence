@@ -6,12 +6,12 @@ use Nette;
 use App\Model;
 use Nette\Database\Context;
 
-class NpcManager extends Nette\Object{
+class PantsManager extends Nette\Object{
 
 	protected $db;
 
 	const TABLE_NAME = 'pants',
-			COLUMN_PANTS = 'pants_id',
+			COLUMN_ID = 'pants_id',
 			COLUMN_NAME = 'name',
 			COLUMN_INFO = 'info',
 			COLUMN_TYPE = 'type',
@@ -25,26 +25,28 @@ class NpcManager extends Nette\Object{
 
 	public function getAllPants()
 	{
-		return $this->$db->table(self::TABLE_NAME)->order(self::COLUMN_PANTS)->fetchAll();
+		return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
 	}
 
 	public function getPants($id)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_PANTS, $id)->fetch();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
 	public function setPants($data)
 	{
-		return $this->$db->table(self::TABLE_NAME)->insert($data);
+		return $this->db->table(self::TABLE_NAME)->insert($data);
 	}
 
 	public function updatePants($data)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_PANTS, $data[self::COLUMN_PANTS])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
 	}
 
 	public function deletePants($id) 
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_PANTS, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
+        
+        /* Additional functions */
 }

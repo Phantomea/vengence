@@ -17,9 +17,34 @@
 </head>
 
 <body>
-	<div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
+    
+    <div id="flex-body">
+        <div id="left-panel">
+            <div id="profile-panel">
+                <div id="profile-image">
+                    <img src="{$basePath}/{$player->avatar}" alt="profile icon" />
+                </div>
+                <div id="profile-name">
+                    {$player->username} <br>
+                    <a n:href=Profile {$player->user_id}>Show profile</a>
+                </div>
+            </div>
+            <div id=menu>
+                <nav>
+                    <ul>
+                        {foreach $menu->related('menu_menu_item') as $men}
+                            <li><a n:href="{$men->menu_item->link}">{$men->menu_item->name}</a></li>
+                        {/foreach}
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div id=content>
+            <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
-	{include content}
+            {include content}
+        </div>
+    </div>
 	
 	{block scripts}
 	<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>

@@ -6,49 +6,48 @@ use Nette;
 use App\Model;
 use Nette\Database\Context;
 
-class WeaponManager extends Nette\Object{
+class HelmetManager extends Nette\Object{
 
 	protected $db;
 
-	const TABLE_NAME = 'weapon',
-			COLUMN_ID = 'weapon_id',
-			COLUMN_FIRST = 'first_weapon_id',
-			COLUMN_SECOND = 'second_weapon_id';
+	const TABLE_NAME = 'helmet',
+			COLUMN_ID = 'helmet_id',
+			COLUMN_NAME = 'name',
+			COLUMN_INFO = 'info',
+			COLUMN_TYPE = 'type',
+			COLUMN_AVATAR = 'avatar',
+			COLUMN_STATE = 'state_id';
 
-	public function __constr(Context $db)
+	public function __constructor(Context $db)
 	{
 		$this->db = $db;
 	}
 
-	public function getWeapons()
+	public function getHelmets()
 	{
 		return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
 	}
 
-	public function getWeapon($id)
+	public function getHelmet($id)
 	{
 		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
-	public function setWeapon()
+	public function setHelmet()
 	{
 		return $this->db->table(self::TABLE_NAME)->insert();
 	}
 
-	public function updateWeapon($data)
+	public function updateHelmet($data)
 	{
 		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
 	}
 
-	public function deleteWeapon($id) 
+	public function deleteHelmet($id) 
 	{
 		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
         
-        /* Additional Functions */
+        /* Additional functions */
         
-        public function getLastWeapon()
-        {
-            return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID." desc")->fetch();
-        }
 }

@@ -6,12 +6,12 @@ use Nette;
 use App\Model;
 use Nette\Database\Context;
 
-class NpcManager extends Nette\Object{
+class SecondWeaponManager extends Nette\Object{
 
 	protected $db;
 
 	const TABLE_NAME = 'second_weapon',
-			COLUMN_WEAPON = 'second_weapon_id',
+			COLUMN_ID = 'second_weapon_id',
 			COLUMN_NAME = 'name',
 			COLUMN_INFO = 'info',
 			COLUMN_TYPE = 'type',
@@ -27,12 +27,12 @@ class NpcManager extends Nette\Object{
 
 	public function getSecondsWeapons()
 	{
-		return $this->$db->table(self::TABLE_NAME)->order(self::COLUMN_WEAPON)->fetchAll();
+		return $this->$db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
 	}
 
 	public function getSecondWeapon($id)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_WEAPON, $id)->fetch();
+		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
 	public function setSecondWeapon($data)
@@ -42,11 +42,11 @@ class NpcManager extends Nette\Object{
 
 	public function updateSecondWeapon($data)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_WEAPON, $data[self::COLUMN_WEAPON])->update($data);
+		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
 	}
 
 	public function deleteSecondWeapon($id) 
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMND_WEAPON, $id)->delete();
+		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
 }

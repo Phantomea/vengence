@@ -109,9 +109,9 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
         
         /* Additional queries */
         
-        public function searchUserByName($name)
+        public function searchUserByNameOrId($value)
         {
-                return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_NAME.'like ?', '%'.$name.'%')->fetchAll();
+                return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_NAME.' LIKE ? OR '.self::COLUMN_ID.' LIKE ?', '%'.$value.'%','%'.$value.'%')->fetchAll();
         }
         
         public function numberOfUsers()

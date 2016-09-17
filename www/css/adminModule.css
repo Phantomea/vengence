@@ -51,6 +51,17 @@ table tbody {
     box-shadow: 0px 1px 3px #bababa;
 }
 
+table tr td input,
+table tr td select,
+table tr td button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #bababa;
+    border-radius: 6px;
+    outline: 0;
+    cursor: pointer;
+}
+
 /* IDs */
 
 #flex-body {
@@ -70,10 +81,7 @@ table tbody {
 
 
 #left-panel {
-    min-width: 200px;
-    max-width: 300px;
     background: #fff;
-    width: 100px;
     -ms-flex: 0 100px;
     -webkit-box-flex:  0;
     -moz-box-flex:  0;
@@ -100,6 +108,10 @@ table tbody {
   color: #219452;
 }
 
+#profile-panel strong {
+    font-size: 16px;
+}
+
 #profile-image img{
   width: 50px;
   height: 50px;
@@ -119,17 +131,16 @@ table tbody {
 
 #menu a {
     display: block;
-    color: #bababa;
+    color: #777;
     font-weight: normal;
     padding: 10px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid #bababa;
 }
 
 #menu a:hover {
     color: #fff;
     background-color: #219452;
     text-decoration: none;
-    font-weight: bold;
 }
 
 #content {
@@ -139,6 +150,37 @@ table tbody {
     -ms-box-flex: 1;
     box-flex: 1;
     padding: 10px;
+}
+
+#content-panels {
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-box;
+    display: box;
+
+    -ms-flex-direction: column;
+    align-content: space-between;
+}
+
+#content-panels > div {
+    -ms-flex: 1;
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -ms-box-flex: 1;
+    box-flex: 1;
+    margin: 5px;
+}
+
+#log-out a{
+    color: #fff;
+    background-color: #e74c3c;
+    font-weight: bold;
+    border: 0;
+}
+
+#log-out a:hover {
+    background-color: #c0392b;
 }
 
 /* Classes */
@@ -169,18 +211,12 @@ table tbody {
     width: 95%;
 }
 
-.search-panel input,
-.search-panel select,
-.search-panel button {
-    width: 100%;
-}
-
 .search-panel table tr td input {
     padding: 10px;
     border: 1px solid #bababa;
     border-right: 0;
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
     outline: 0;
 }
 
@@ -189,12 +225,18 @@ table tbody {
     background-color: #2ecc71; 
     padding: 10px;
     border: 1px solid #219452;
-    border-top-right-radius: 6px;
-    border-bottom-right-radius: 6px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
 }
 
-.users-info-panel {
-    width: 200px;
+#grey::before {
+    content: "└ ";
+}
+
+#grey {
+    background-color: #eee;
+    border-bottom: 1px solid #bababa;
+    padding: 10px;
 }
 
 /* Overriding bootstrap */
@@ -202,4 +244,8 @@ table tbody {
 .dropdown-header {
     padding: 0;
     margin: 0;
+}
+
+.btn-success {
+    
 }

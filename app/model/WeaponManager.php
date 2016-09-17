@@ -15,7 +15,7 @@ class WeaponManager extends Nette\Object{
 			COLUMN_FIRST = 'first_weapon_id',
 			COLUMN_SECOND = 'second_weapon_id';
 
-	public function __constr(Context $db)
+	public function __construct(Context $db)
 	{
 		$this->db = $db;
 	}
@@ -30,14 +30,14 @@ class WeaponManager extends Nette\Object{
 		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
-	public function setWeapon()
+	public function setWeapon($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->insert();
+		return $this->db->table(self::TABLE_NAME)->insert($data);
 	}
 
 	public function updateWeapon($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
 	public function deleteWeapon($id) 
@@ -49,6 +49,6 @@ class WeaponManager extends Nette\Object{
         
         public function getLastWeapon()
         {
-            return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID." desc")->fetch();
+            return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID." DESC")->limit(1)->fetch();
         }
 }

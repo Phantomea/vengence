@@ -16,7 +16,7 @@ class MenuItemManager extends Nette\Object{
 			COLUMN_LINK = 'link',
 			COLUMN_MENU_ID = 'menu_id';
 
-	public function __constructor(Context $db)
+	public function __construct(Context $db)
 	{
 		$this->db = $db;
 	}
@@ -38,11 +38,18 @@ class MenuItemManager extends Nette\Object{
 
 	public function updateMenuItem($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
 	public function deleteMenuItem($id) 
 	{
 		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
 	}
+        
+        /* Additional functions */
+        
+        public function getLastMenuItem()
+        {
+            return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID." DESC")->limit(1)->fetch();
+        }
 }

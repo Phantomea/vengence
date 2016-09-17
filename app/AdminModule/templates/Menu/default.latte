@@ -1,0 +1,53 @@
+{* Latte template *}
+
+{block content}
+<div id="content-panels">
+    <div>
+        <table>
+            <thead>
+                <th colspan="2">Menus</th>
+            </thead>
+            <tbody>
+                {foreach $menus as $men}
+                    <tr>
+                        <td> <a n:href=User:detail {$men->menu_id}><span class="glyphicon glyphicon-cog"></span></a> &nbsp; {$men->name}</td>
+                        {ifset $menuItems}
+                            {ifset $menuItems[$men->menu_id]}
+                                {foreach $menuItems[$men->menu_id] as $mi}
+                                    <tr>
+                                        <td id="grey">
+                                            <strong>{$mi->menu_item->name}</strong> &nbsp; Link: <strong>{$mi->menu_item->link}</strong>
+                                        </td>
+                                    </tr>
+                                {/foreach}
+                            {/ifset}
+                        {/ifset}
+                    </tr>
+                {/foreach}
+            </tbody>
+        </table>
+    </div>      
+    <div>
+        <form n:name=createMenuItemsForm>
+            <table>
+                <thead>
+                    <th>Create menu item</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><select n:name=menu_id></select></td>
+                    </tr>
+                    <tr>
+                        <td><input n:name=name /></td>
+                    </tr>
+                    <tr>
+                        <td><input n:name=link /></td>
+                    </tr>
+                    <tr>
+                        <td><button n:name=add class="btn-success">Add</button></td>
+                    </tr>
+                </tbody>
+            </table> 
+        </form>
+    </div>
+</div>

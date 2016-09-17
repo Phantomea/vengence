@@ -14,7 +14,7 @@ class LocationNpcManager extends Nette\Object{
 			COLUMN_ID = 'location_npc_id',
 			COLUMN_NPC = 'npc_id';
 
-	public function __constructor(Context $db)
+	public function __construct(Context $db)
 	{
 		$this->db = $db;
 	}
@@ -36,7 +36,7 @@ class LocationNpcManager extends Nette\Object{
 
 	public function updateLocationNpc($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
 	public function deleteLocationNpc($id) 

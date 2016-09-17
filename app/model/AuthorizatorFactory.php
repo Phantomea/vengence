@@ -28,14 +28,16 @@ class AuthorizatorFactory extends Nette\Object {
 
         //-----------ZDROJE----------(templates)//
         $acl->addResource('Front:Homepage');
-        $acl->addResource('Admin:Homepage');
-        $acl->addResource('Game:Homepage');
-
         $acl->addResource('Front:Sign');
         $acl->addResource('Front:Registration');
-        $acl->addResource('Admin:Sign');
-        $acl->addResource('Game:Sign');
         
+        $acl->addResource('Admin:Homepage');
+        $acl->addResource('Admin:Sign');
+        $acl->addResource('Admin:User');
+        $acl->addResource('Admin:Menu');
+        
+        $acl->addResource('Game:Homepage');
+        $acl->addResource('Game:Sign');
         $acl->addResource('Game:Location');
 
 

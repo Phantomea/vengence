@@ -12,20 +12,21 @@
 	<link rel="stylesheet" href="{$basePath}/css/normalize.css">
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{$basePath}/css/adminModule.css">
+        <link rel="stylesheet" href="{$basePath}/css/bootstrap-datepicker.css">
 	<meta name="viewport" content="width=device-width">
 	{block head}{/block}
 </head>
 
-<body>
-    
+<body>   
     <div id="flex-body">
+    {if $player}
         <div id="left-panel">
             <div id="profile-panel">
                 <div id="profile-image">
                     <img src="{$basePath}/{$player->avatar}" alt="profile icon" />
                 </div>
                 <div id="profile-name">
-                    {$player->username} <br>
+                    <strong>{$player->username}</strong> <br>
                     <a n:href=Profile {$player->user_id}>Show profile</a>
                 </div>
             </div>
@@ -35,10 +36,12 @@
                         {foreach $menu->related('menu_menu_item') as $men}
                             <li><a n:href="{$men->menu_item->link}">{$men->menu_item->name}</a></li>
                         {/foreach}
+                        <li id="log-out"><a n:href=Sign:out>Log out</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
+    {/if}
         <div id=content>
             <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
 
@@ -52,6 +55,15 @@
 	<script src="{$basePath}/js/main.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="{$basePath}/js/bootstrap-datepicker.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $('#datepicker').datepicker({
+                    format: 'mm/dd/yyyy',
+                    startDate: '-3d'
+                });
+            });
+        </script>
 	{/block}
 </body>
 </html>

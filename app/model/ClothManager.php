@@ -18,7 +18,7 @@ class ClothManager extends Nette\Object{
 			COLUMN_AVATAR = 'avatar',
 			COLUMN_STATE = 'state_id';
 
-	public function __construt(Context $db)
+	public function __construct(Context $db)
 	{
 		$this->db = $db;
 	}
@@ -40,7 +40,7 @@ class ClothManager extends Nette\Object{
 
 	public function updateCloth($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
 	public function deleteCloth($id) 

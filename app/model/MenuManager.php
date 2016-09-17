@@ -36,7 +36,7 @@ class MenuManager extends Nette\Object{
 
 	public function updateMenu($data)
 	{
-            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
 	public function deleteMenu($id) 

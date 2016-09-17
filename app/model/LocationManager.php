@@ -16,7 +16,7 @@ class LocationManager extends Nette\Object{
 			COLUMN_MAXIMUM_LEVEL = 'maximum_level',
 			COLUMN_MINIMUM_LEVEL = 'minimum_level';
 
-	public function __constructor(Context $db)
+	public function __construct(Context $db)
 	{
 		$this->db = $db;
 	}
@@ -38,7 +38,7 @@ class LocationManager extends Nette\Object{
 
 	public function updateLocation($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
 	public function deleteLocation($id) 

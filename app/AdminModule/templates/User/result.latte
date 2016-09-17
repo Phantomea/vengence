@@ -20,6 +20,8 @@
             <th>Birth date</th>
             <th>Role</th>
             <th>Type</th>
+            <th>Edit</th>
+            <th>Ban</th>
         </thead>
         <tbody>
             {foreach $result as $res}
@@ -27,7 +29,7 @@
                     <td>{$res->user_id}</td>
                     <td>{$res->username}</td>
                     <td>{$res->email}</td>
-                    <td>{$res->birth_date}</td>
+                    <td>{$res->birth_date|date:'j.n.Y'}</td>
                     <td>{$res->role}</td>
                     <td>
                         {if $res->type == 1}
@@ -36,6 +38,8 @@
                             Investigator
                         {/if}
                     </td>
+                    <td><a n:href="User:detail, $res->user_id"><span class="glyphicon glyphicon-cog"></span></a></td>
+                    <td><a n:href="banUser! $res->user_id"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
             {/foreach}
         </tbody>

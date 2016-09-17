@@ -1,0 +1,81 @@
+{* Latte template *}
+
+{block content} 
+<div class="search-panel">
+    <form n:name=userSearchForm>
+        <table>
+            <tr>
+                <td><input n:name=word autocomplete="off" /></td>
+                <td><button n:name=search><span class="glyphicon glyphicon-search"></span></button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="content-panels">
+    <div class="users-info-panel">
+        <div>
+            <table>
+                <thead>
+                    <th colspan="2">Number of users</th>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>All users</strong></td>
+                        <td>{$numberOfUsers}</td>
+                    </tr>
+                    <tr>
+                        <td>Administrators</td>
+                        <td>{$numberOfAdministrators}</td>
+                    </tr>
+                    <tr>
+                        <td>Moderators</td>
+                        <td>{$numberOfModerators}</td>
+                    </tr>
+                    <tr>
+                        <td>Players</td>
+                        <td>{$numberOfPlayers}</td>
+                    </tr>
+                    <tr>
+                        <td>Banned</td>
+                        <td>{$numberOfBannedUsers}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+<div>
+    <form n:name=createUserForm>
+        <table>
+            <thead>
+                <th>Add user</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input n:name=username autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><input n:name=password type="password" autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><input n:name=birth_date id="datetimepicker" autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><input n:name=email type="email" autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><select n:name=type></select></td>
+                </tr>
+                <tr>
+                    <td><select n:name=role></select></td>
+                </tr>
+                <tr>
+                    <td><input n:name=avatar autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><button n:name=register class="btn-success">Register</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>    
+</div>    

@@ -18,7 +18,7 @@ class ArticleManager extends Nette\Object{
                 COLUMN_PUBLISHED = 'published',
                 COLUMN_AUTHOR = 'author_id';
 
-	public function __constructor(Context $db)
+	public function __construct(Context $db)
 	{
 		$this->db = $db;
 	}
@@ -40,7 +40,7 @@ class ArticleManager extends Nette\Object{
 
 	public function updateArticle($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
 	public function deleteArticle($id) 

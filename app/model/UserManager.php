@@ -91,6 +91,16 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	{
 		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
+        
+        public function getUserByName($name)
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_NAME, $name)->fetch();
+        }
+        
+        public function getUserByEmail($email)
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_EMAIL, $email)->fetch();
+        }
 
 	public function setUser($data)
 	{
@@ -99,7 +109,7 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 
 	public function updateUser($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
 	public function deleteUser($id) 
@@ -108,6 +118,11 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 	}
         
         /* Additional queries */
+        
+        public function getLastUser()
+        {
+            return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID." desc")->fetch();
+        }
         
         public function searchUserByNameOrId($value)
         {

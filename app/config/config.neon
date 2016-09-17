@@ -24,6 +24,10 @@ services:
 	- App\Model\MenuManager
 	- App\Model\MenuItemManager
 	- App\Model\MenuMenuItemManager
+	- App\Model\UserStateManager
+	- App\Model\ArmorManager
+	- App\Model\WeaponManager
+	- App\Model\BankAccountManager
 	- App\Forms\FormFactory
 	- App\Model\AuthorizatorFactory
 	- App\Forms\SignFormFactory

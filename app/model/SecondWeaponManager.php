@@ -20,7 +20,7 @@ class SecondWeaponManager extends Nette\Object{
 			COLUMN_FIRST = 'first_damage',
 			COLUMN_STATE = 'state_id';
 
-	public function __constructor(Context $db)
+	public function __construct(Context $db)
 	{
 		$this->db = $db;
 	}
@@ -42,7 +42,7 @@ class SecondWeaponManager extends Nette\Object{
 
 	public function updateSecondWeapon($data)
 	{
-		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->$db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
 	public function deleteSecondWeapon($id) 

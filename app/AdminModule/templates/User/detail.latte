@@ -1,0 +1,48 @@
+{* Latte template *}
+
+{block content}
+<div class="search-panel">
+    <form n:name=userSearchForm>
+        <table>
+            <tr>
+                <td><input n:name=word autocomplete="off" /></td>
+                <td><button n:name=search><span class="glyphicon glyphicon-search"></span></button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+<div id="content-panels">
+    <form n:name=editUserForm>
+        <table>
+            <thead>
+                <th>Edit user</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input n:name=username autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><input n:name=password type="password" autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><input n:name=birth_date id="datepicker" autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><input n:name=email type="email" autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><select n:name=type></select></td>
+                </tr>
+                <tr>
+                    <td><select n:name=role></select></td>
+                </tr>
+                <tr>
+                    <td><input n:name=avatar autocomplete="off" /></td>
+                </tr>
+                <tr>
+                    <td><button n:name=edit class="btn-success">Edit</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>

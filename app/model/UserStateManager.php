@@ -6,46 +6,46 @@ use Nette;
 use App\Model;
 use Nette\Database\Context;
 
-class ArmorManager extends Nette\Object{
+class UserStateManager extends Nette\Object{
 
 	protected $db;
 
-	const TABLE_NAME = 'armor',
-			COLUMN_ID = 'armor_id';
+	const TABLE_NAME = 'user_state',
+			COLUMN_ID = 'user_state_id';
 
 	public function __construct(Context $db)
 	{
 		$this->db = $db;
 	}
 
-	public function getArmors()
+	public function getUserStates()
 	{
 		return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
 	}
 
-	public function getArmor($id)
+	public function getUserState($id)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
-	public function setArmor($data)
+	public function setUserState($data)
 	{
 		return $this->db->table(self::TABLE_NAME)->insert($data);
 	}
 
-	public function updateArmor($data)
+	public function updateUserState($data)
 	{
 		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
-	public function deleteArmor($id) 
+	public function deleteUserState($id) 
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
         
-        /* Additional Functions */
+        /* Additional functions */
         
-        public function getLastArmor()
+        public function getLastUserState()
         {
             return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID." DESC")->limit(1)->fetch();
         }

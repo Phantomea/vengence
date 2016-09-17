@@ -15,7 +15,7 @@ class BankAccountManager extends Nette\Object{
 			COLUMN_MONEY = 'money',
 			COLUMN_DIAMONS = 'diamonds';
 
-	public function __constructor(Context $db)
+	public function __construct(Context $db)
 	{
 		$this->db = $db;
 	}
@@ -30,18 +30,25 @@ class BankAccountManager extends Nette\Object{
 		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
 	}
 
-	public function setBankAccount()
+	public function setBankAccount($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->insert();
+		return $this->db->table(self::TABLE_NAME)->insert($data);
 	}
 
 	public function updateBankAccount($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[self::COLUMN_ID])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
 	}
 
 	public function deleteBankAccount($id) 
 	{
 		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
 	}
+        
+        /* Additional functions */
+        
+        public function getLastBankAccount()
+        {
+            return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID." DESC")->limit(1)->fetch();
+        }
 }

@@ -27,7 +27,7 @@ class BankAccountManager extends Nette\Object{
 
 	public function getBankAccount($id)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
 	public function setBankAccount($data)

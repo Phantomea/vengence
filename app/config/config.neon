@@ -31,6 +31,10 @@ services:
 	- App\Forms\FormFactory
 	- App\Model\AuthorizatorFactory
 	- App\Forms\SignFormFactory
+	- App\Forms\RegisterUserFactory
+	- App\Forms\EditUserFactory
+	- App\Forms\SearchUserFactory
+	- App\Forms\EditUserBankAccountFactory
 	router: App\RouterFactory::createRouter
 	-
 		class: Nette\Security\Permission

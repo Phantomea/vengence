@@ -2,28 +2,24 @@
 
 namespace AdminModule;
 
+use Nette;
 use App\Model\UserManager;
 use App\Model\UserStateManager;
 use App\Model\ArmorManager;
 use App\Model\WeaponManager;
 use App\Model\BankAccountManager;
+
+use App\Forms\RegisterUserFactory;
+use App\Forms\EditUserFactory;
+use App\Forms\SearchUserFactory;
+use App\Forms\EditUserBankAccountFactory;
+
 use Nette\Application\UI;
 use Nette\Application\UI\Form;
 use Nette\Security\Passwords;
 
 final class UserPresenter extends BasePresenter
 {
-    public $types = [
-                1 => "Ghoul",
-                2 => "Investigator"
-            ];
-    
-    public $roles = [
-        "player" => "Player",
-        "moderator" => "Moderator",
-        "banned" => "Banned",
-        "admin" => "Admin"
-    ];
     
 	public function renderDefault()
 	{
@@ -41,12 +37,13 @@ final class UserPresenter extends BasePresenter
             
             // \Tracy\Debugger::barDump($users);
 	}
+        
         public function renderResult($value)
         {
             $result = $this->userManager->searchUserByNameOrId($value);
             $this->template->result = $result;
             $this->template->value = $value;
-            $this["userSearchForm"]->setDefaults(array(
+            $this["searchUserForm"]->setDefaults(array(
                 "word" => $value
             ));
         }
@@ -54,8 +51,13 @@ final class UserPresenter extends BasePresenter
         public function renderDetail($user_id)
         {
             $user = $this->userManager->getUser($user_id);
+            $userBankAccount = $this->bankAccountManager->getBankAccount($user->bank_account);
+            
             $user = $user->toArray();
+            $userBankAccount = $userBankAccount->toArray();
+            
             $this["editUserForm"]->setDefaults($user);
+            $this["editUserBankAccountForm"]->setDefaults($userBankAccount);
         }
         
         /* Aciotns */
@@ -67,78 +69,39 @@ final class UserPresenter extends BasePresenter
                 "role" => "banned"
             ));
         }
-
-
         
-        protected function createComponentUserSearchForm()
+        protected function createComponentRegisterUserForm()
         {
             $form = new Form();
-            $form->addText("word", "Word")
-                    ->setRequired("Type something here!")
-                    ->setAttribute("placeholder", "Enter username or user's ID");
-            $form->addSubmit("search", "Search");
-            $form->onSuccess[] = array($this, "searchUser");
-            return $form;
-        }
-        
-        protected function createComponentCreateUserForm()
-        {
-            $form = new Form();
-            $form->addText("username", "Username")
-                    ->setRequired("Choose player's username")
-                    ->setAttribute("placeholder", "Enter username or user's ID");
-            $form->addPassword("password", "Password")
-                    ->setRequired("Choose the password")
-                    ->addRule(Form::MIN_LENGTH, "Password has to contain atleast % characters", 4)
-                    ->setAttribute("placeholder", "Password");
-            $form->addText("birth_date", "Birth date")
-                    ->setRequired("Choose birth date")
-                    ->setAttribute("placeholder", "Birth date");
-            $form->addText("email", "Email")
-                    ->setRequired("Enter email address")
-                    ->addRule(Form::EMAIL, "Bad pattern of email address")
-                    ->setAttribute("placeholder", "Email");
-            $form->addSelect("type", "Type")
-                    ->setItems($this->types);
-            $form->addSelect("role", "Role")
-                    ->setItems($this->roles);
-            $form->addUpload('avatar')
-                    ->addCondition(Form::IMAGE)
-                        ->addRule(Form::MIME_TYPE, 'File has to be JPEG or PNG!', array('image/jpeg', 'image/png'))
-                    ->addRule(Form::MAX_FILE_SIZE, 'Maximum size of image has to be 64 kB.', 64 * 1024 /* v bytech */);
-            $form->addSubmit("register", "Register");
-            $form->onSuccess[] = array($this, "addUser");
+            $form = (new RegisterUserFactory())->create();
+            $form->onSuccess[] = [$this, 'addUser'];
             return $form;
         }
         
         protected function createComponentEditUserForm()
         {
             $form = new Form();
-            $form->addHidden("user_id");
-            $form->addText("username", "Username")
-                    ->setRequired("Choose player's username")
-                    ->setAttribute("placeholder", "Enter username or user's ID");
-            $form->addPassword("password", "Password")
-                    ->setAttribute("placeholder", "Password");
-            $form->addText("birth_date", "Birth date")
-                    ->setRequired("Choose birth date")
-                    ->setAttribute("placeholder", "Birth date");
-            $form->addText("email", "Email")
-                    ->setRequired("Enter email address")
-                    ->addRule(Form::EMAIL, "Bad pattern of email address")
-                    ->setAttribute("placeholder", "Email");
-            $form->addSelect("type", "Type")
-                    ->setItems($this->types);
-            $form->addSelect("role", "Role")
-                    ->setItems($this->roles);
-            $form->addUpload('avatar')
-                    ->addCondition(Form::IMAGE)
-                        ->addRule(Form::MIME_TYPE, 'File has to be JPEG or PNG!', array('image/jpeg', 'image/png'))
-                    ->addRule(Form::MAX_FILE_SIZE, 'Maximum size of image has to be 64 kB.', 64 * 1024 /* v bytech */);
-            $form->addSubmit("edit", "Edit");
-            $form->onSuccess[] = array($this, "editUser");
+            $form = (new EditUserFactory())->create();
+            $form->onSuccess[] = [$this, 'editUser'];
             return $form;
         }
+        
+        protected function createComponentSearchUserForm()
+        {
+            $form = new Form();
+            $form = (new SearchUserFactory())->create();
+            $form->onSuccess[] = [$this, 'searchUser'];
+            return $form;
+        }
+        
+        protected function createComponentEditUserBankAccountForm()
+        {
+            $form = new Form();
+            $form = (new \App\Forms\EditUserBankAccountFactory())->create();
+            $form->onSuccess[] = [$this, 'editUserBankAccount'];
+            return $form;
+        }
+        
         
         public function searchUser($form, $values)
         {
@@ -226,7 +189,7 @@ final class UserPresenter extends BasePresenter
                 } else {
                     $values["password"] = Passwords::hash($values["password"]);
                 }
-                
+
                 if($values["avatar"] == "")
                 {
                     unset($values["avatar"]);
@@ -266,5 +229,19 @@ final class UserPresenter extends BasePresenter
                 $this->redirect("User:detail", $values["user_id"]);
             } 
         }
+        
+        public function editUserBankAccount($form, $values)
+        {
+            if($form['edit']->isSubmittedBy())
+            {
+                if($form->isValid())
+                {
+                    $this->bankAccountManager->updateBankAccount($values);
+                    $this->flashMessage('Bank account has been modified');
+                    $this->redirect('this');
+                }
+            }
+        }
+        
 
 }

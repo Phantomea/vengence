@@ -44,7 +44,18 @@
     {/if}
         <div id=content>
             <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-
+            
+            <div class="search-panel">
+                <form n:name=searchUserForm>
+                    <table>
+                        <tr>
+                            <td><input n:name=word autocomplete="off"/></td>
+                            <td><button n:name=search><span class="glyphicon glyphicon-search"></span></button></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            
             {include content}
         </div>
     </div>

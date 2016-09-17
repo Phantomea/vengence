@@ -1,16 +1,6 @@
 {* Latte template *}
 
-{block content} 
-<div class="search-panel">
-    <form n:name=userSearchForm>
-        <table>
-            <tr>
-                <td><input n:name=word autocomplete="off" /></td>
-                <td><button n:name=search><span class="glyphicon glyphicon-search"></span></button></td>
-            </tr>
-        </table>
-    </form>
-</div>
+{block content}
 <div id="content-panels">
     <div class="users-info-panel">
         <div>
@@ -44,7 +34,7 @@
         </div>
     </div>
 <div>
-    <form n:name=createUserForm>
+    <form n:name=registerUserForm>
         <table>
             <thead>
                 <th>Add user</th>
@@ -57,7 +47,7 @@
                     <td><input n:name=password type="password" autocomplete="off" /></td>
                 </tr>
                 <tr>
-                    <td><input n:name=birth_date id="datetimepicker" autocomplete="off" /></td>
+                    <td><input n:name=birth_date id="datepicker" autocomplete="off" /></td>
                 </tr>
                 <tr>
                     <td><input n:name=email type="email" autocomplete="off" /></td>

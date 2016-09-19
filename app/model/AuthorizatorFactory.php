@@ -26,7 +26,7 @@ class AuthorizatorFactory extends Nette\Object {
 
 
 
-        //-----------ZDROJE----------(templates)//
+        //-----------Resources----------(all templates)//
         $acl->addResource('Front:Homepage');
         $acl->addResource('Front:Sign');
         $acl->addResource('Front:Registration');
@@ -35,6 +35,7 @@ class AuthorizatorFactory extends Nette\Object {
         $acl->addResource('Admin:Sign');
         $acl->addResource('Admin:User');
         $acl->addResource('Admin:Menu');
+        $acl->addResource('Admin:Helmet');
         
         $acl->addResource('Game:Homepage');
         $acl->addResource('Game:Sign');
@@ -51,7 +52,6 @@ class AuthorizatorFactory extends Nette\Object {
         
         $acl->allow(self::ROLE_MODERATOR, 'Admin:Sign',array('in','out'));    
         $acl->allow(self::ROLE_MODERATOR, 'Admin:Homepage');
-        $acl->allow(self::ROLE_MODERATOR, 'Front:Sign','in');
 		
         $acl->allow(self::ROLE_PLAYER, 'Admin:Sign','in');
         $acl->allow(self::ROLE_PLAYER, 'Game:Homepage');

@@ -7,6 +7,11 @@ final class HomepagePresenter extends BasePresenter
 {
 	public function renderDefault()
 	{
-            $this->redirect("User:default");
+            if($this->user->isAllowed())
+            {
+                $this->redirect("User:default");
+            } else {
+                $this->redirect("Article:default");
+            }
 	}
 }

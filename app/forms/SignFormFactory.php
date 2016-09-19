@@ -9,11 +9,11 @@ use Nette\Security\User;
 
 class SignFormFactory extends Nette\Object
 {
-	/** @var FormFactory */
-	private $factory;
+    /** @var FormFactory */
+    private $factory;
 
-	/** @var User */
-	private $user;
+    /** @var User */
+    private $user;
 
 
 	public function __construct(FormFactory $factory, User $user)

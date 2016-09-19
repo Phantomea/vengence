@@ -50,4 +50,23 @@ class HelmetManager extends Nette\Object{
         
         /* Additional functions */
         
+        public function getLastTenHelmets()
+        {
+            return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->limit(10)->fetchAll();
+        }
+        
+        public function getNumberOfHelmets()
+        {
+            return $this->db->table(self::TABLE_NAME)->count();
+        }
+        
+        public function getNumberOfGhoulHelmets()
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_TYPE, 1)->count();
+        }
+        
+        public function getNumberOfInvestigatorHelmets()
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_TYPE, 2)->count();
+        }
 }

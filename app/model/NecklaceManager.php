@@ -18,7 +18,7 @@ class NecklaceManager extends Nette\Object {
 	COLUMN_AVATAR = "avatar",
 	COLUMN_STATE_ID = "state_id";
 
-	public function __constructor(Context $db){
+	public function __construct(Context $db){
 		$this->db = $db;
 	}
 

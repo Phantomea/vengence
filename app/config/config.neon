@@ -28,13 +28,22 @@ services:
 	- App\Model\ArmorManager
 	- App\Model\WeaponManager
 	- App\Model\BankAccountManager
-	- App\Forms\FormFactory
+	- App\Model\HelmetManager
+	- App\Model\CloakManager
+	- App\Model\ClothManager
+	- App\Model\MaskManager
+	- App\Model\NecklaceManager
+	- App\Model\GloveManager
+	- App\Model\PantsManager
+	- App\Model\BootManager
 	- App\Model\AuthorizatorFactory
+	- App\Forms\FormFactory
 	- App\Forms\SignFormFactory
 	- App\Forms\RegisterUserFactory
 	- App\Forms\EditUserFactory
 	- App\Forms\SearchUserFactory
 	- App\Forms\EditUserBankAccountFactory
+	- App\Forms\WeaponFactory
 	router: App\RouterFactory::createRouter
 	-
 		class: Nette\Security\Permission

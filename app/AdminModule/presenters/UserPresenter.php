@@ -8,6 +8,7 @@ use App\Model\UserStateManager;
 use App\Model\ArmorManager;
 use App\Model\WeaponManager;
 use App\Model\BankAccountManager;
+use App\Model\HelmetManager;
 
 use App\Forms\RegisterUserFactory;
 use App\Forms\EditUserFactory;
@@ -53,11 +54,27 @@ final class UserPresenter extends BasePresenter
             $user = $this->userManager->getUser($user_id);
             $userBankAccount = $this->bankAccountManager->getBankAccount($user->bank_account);
             
+            $userHelmet = $this->helmetManager->getHelmet($user->armor->helmet_id);
+            $userCloak = $this->cloakManager->getCloack($user->armor->cloak_id);
+            $userCloth = $this->clothManager->getCloth($user->armor->cloth_id);
+            $userGloves = $this->gloveManager->getGlove($user->armor->glove_id);
+            $userNecklace = $this->necklaceManager->getNecklace($user->armor->necklace_id);
+            $userPants = $this->pantsManager->getPants($user->armor->pants_id);
+            $userBoots = $this->bootManager->getBoot($user->armor->boot_id);
+            
             $user = $user->toArray();
             $userBankAccount = $userBankAccount->toArray();
             
             $this["editUserForm"]->setDefaults($user);
             $this["editUserBankAccountForm"]->setDefaults($userBankAccount);
+            
+            $this->template->helmet = $userHelmet;
+            $this->template->cloak = $userCloak;
+            $this->template->cloth = $userCloth;
+            $this->template->gloves = $userGloves;
+            $this->template->necklace = $userNecklace;
+            $this->template->pants = $userPants;
+            $this->template->boots = $userBoots;
         }
         
         /* Aciotns */
@@ -126,22 +143,6 @@ final class UserPresenter extends BasePresenter
                         
                         $empty = [];
                         
-                        $createUserState = $this->userStateManager->setUserState($empty);
-                        $lastUserState = $this->userStateManager->getLastUserState();
-                        $values["user_state_id"] = $lastUserState->user_state_id;
-                        
-                        $createArmor = $this->armorManager->setArmor($empty);
-                        $lastArmor = $this->armorManager->getLastArmor();
-                        $values["armor_id"] = $lastArmor->armor_id;
-                        
-                        $createWeapon = $this->weaponManager->setWeapon($empty);
-                        $lastWeapon = $this->weaponManager->getLastWeapon();
-                        $values["weapon_id"] = $lastWeapon->weapon_id;
-                        
-                        $createBankAccount = $this->bankAccountManager->setBankAccount($empty);
-                        $lastBankAccount = $this->bankAccountManager->getLastBankAccount();
-                        $values["bank_account_id"] = $lastBankAccount->bank_account_id;
-                        
                         if($values["role"])
                         {
                             switch ($values["role"])
@@ -171,9 +172,34 @@ final class UserPresenter extends BasePresenter
                             $values["menu_id"] = 2;
                         }
                         
+                        if(isset($values['avatar']))
+                        {
+                            $values['avatar'] = $this->insertUploadedImage($values['avatar'], 'users', $values['username']);
+                        }
+                        
+                        
+                        $createUserState = $this->userStateManager->setUserState($empty);
+                        $lastUserState = $this->userStateManager->getLastUserState();
+                        $values["user_state_id"] = $lastUserState->user_state_id;
+                        
+                        $createArmor = $this->armorManager->setArmor($empty);
+                        $lastArmor = $this->armorManager->getLastArmor();
+                        $values["armor_id"] = $lastArmor->armor_id;
+                        
+                        $createWeapon = $this->weaponManager->setWeapon($empty);
+                        $lastWeapon = $this->weaponManager->getLastWeapon();
+                        $values["weapon_id"] = $lastWeapon->weapon_id;
+                        
+                        $createBankAccount = $this->bankAccountManager->setBankAccount($empty);
+                        $lastBankAccount = $this->bankAccountManager->getLastBankAccount();
+                        $values["bank_account_id"] = $lastBankAccount->bank_account_id;
+                        
                         $createUser = $this->userManager->setUser($values);
+                        
                         $this->flashMessage("User has been created!");
                         $this->redirect("this");
+                    } else {
+                        $this->flashMessage("Username or email are already taken!");
                     }
                 }
             }
@@ -224,6 +250,13 @@ final class UserPresenter extends BasePresenter
                 {
                     $values["menu_id"] = 2;
                 }
+                
+                if(isset($values['avatar']))
+                {
+                    $values['avatar'] = $this->insertUploadedImage($values['avatar'], 'users', $values['username']);
+                }
+                        
+                        
                 $editUser = $this->userManager->updateUser($values);
                 $this->flashMessage("User has been updated!");
                 $this->redirect("User:detail", $values["user_id"]);

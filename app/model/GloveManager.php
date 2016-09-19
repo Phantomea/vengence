@@ -15,10 +15,10 @@ class GloveManager extends Nette\Object {
 	COLUMN_NAME = "name",
 	COLUMN_INFO = "info",
 	COLUMN_TYPE = "type",
-	COLUMN_AVATAR = "avatar"
+	COLUMN_AVATAR = "avatar",
 	COLUMN_STATE_ID = "state_id";
 
-	public function __constructor(Context $db){
+	public function __construct(Context $db){
 		$this->db = $db;
 	}
 

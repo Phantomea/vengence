@@ -28,6 +28,7 @@ abstract class Control extends PresenterComponent implements IRenderable
 
 	/** @var bool */
 	public $snippetMode;
+        
 
 
 	/********************* template factory ****************d*g**/

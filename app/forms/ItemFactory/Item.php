@@ -7,12 +7,8 @@ use Entity;
 use Nette\Application\UI;
 use Nette;
 use App\Model\ItemManager;
-use AdminModule\BasePresenter;
 
 class Item extends UI\Control {
-    
-    /** @var \App\AdminModule\BasePresenter @inject*/
-    public $basePresenter;
 
     private $itemManager;
     private $item;
@@ -37,9 +33,9 @@ class Item extends UI\Control {
         'potion' => 'Potion'
     ];
 
-    public function __construct(ItemManager $items, $id) {
+    public function __construct(ItemManager $im, $id) {
         parent::__construct();
-        $this->itemManager = $items;
+        $this->itemManager = $im;
         $this->item = $this->itemManager->getItem($id);
     }
 

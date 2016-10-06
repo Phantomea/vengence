@@ -1,0 +1,29 @@
+{* Latte template *}
+
+{block content}
+<h1> {$name}</h1>
+
+<div id="content-panels">
+	<div>
+		<table>
+			<thead>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Preview</th>
+				<th>Published</th>
+				<th>Author</th>
+			</thead>
+			<tbody>
+				{foreach $articles as $ar}
+					<tr>
+						<td>{$ar->article_id}</td>
+						<td>{$ar->title}</td>
+						<td><img src="{$basePath}/{$ar->preview}" width="50px" /></td>
+						<td>{$ar->published}</td>
+						<td>{$ar->author->username}</td>
+					</tr>
+				{/foreach}
+			</tbody>
+		</table>
+	</div>
+</div>

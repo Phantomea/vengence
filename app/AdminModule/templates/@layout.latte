@@ -44,7 +44,26 @@
     {/if}
         <div id=content>
             <div n:foreach="$flashes as $flash" n:class="flash, $flash->type">{$flash->message}</div>
-
+            {if $player}
+                <div class="search-panel">    
+                    <form action="{$presenter->link('result')}">
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        {ifset $value}
+                                            <input name="value" autocomplete="off" value="{$value}" placeholder="Choose name or ID"/>
+                                            {else}
+                                            <input name="value" autocomplete="off" placeholder="Choose name or ID" />
+                                        {/ifset}
+                                    </td>
+                                    <td><button name="search"><span class="glyphicon glyphicon-search"></span></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </form>
+                </div>
+            {/if}
             {include content}
         </div>
     </div>

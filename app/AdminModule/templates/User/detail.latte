@@ -38,6 +38,18 @@
         </form>
     </div>
     <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Avatar preview</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="{$basePath}/{$user->avatar}" width="50%" height="auto" /></td>
+                </tr>
+            </tbody>
+        </table>
         <form n:name=editUserBankAccountForm>
             <table>
                 <thead>
@@ -66,65 +78,9 @@
     <div>
         <table>
             <thead>
-                <th>Weapons</th>
+                <th>Equipment</th>
             </thead>
             <tbody>
-                <tr><td>Helmet</td></tr>
-                <tr>
-                    {if $helmet}
-                        <td><img src="{$basePath}/{$helmet->avatar}" /></td>
-                    {else}
-                        <td id="grey">Empty</td>
-                    {/if}
-                </tr>
-                <tr><td>Cloak</td></tr>
-                <tr>
-                    {if $cloak}
-                        <td><img src="{$basePath}/{$cloak->avatar}" /></td>
-                    {else}
-                        <td id="grey">Empty</td>
-                    {/if}
-                </tr>
-                <tr><td>Cloth</td></tr>
-                <tr>
-                    {if $cloth}
-                        <td><img src="{$basePath}/{$cloth->avatar}" /></td>
-                    {else}
-                        <td id="grey">Empty</td>
-                    {/if}
-                </tr>
-                <tr><td>Necklace</td></tr>
-                <tr>
-                    {if $necklace}
-                        <td><img src="{$basePath}/{$necklace->avatar}" /></td>
-                    {else}
-                        <td id="grey">Empty</td>
-                    {/if}
-                </tr>
-                <tr><td>Gloves</td></tr>
-                <tr>
-                    {if $gloves}
-                        <td><img src="{$basePath}/{$gloves->avatar}" /></td>
-                    {else}
-                        <td id="grey">Empty</td>
-                    {/if}
-                </tr>
-                <tr><td>Pants</td></tr>
-                <tr>
-                    {if $pants}
-                        <td><img src="{$basePath}/{$pants->avatar}" /></td>
-                    {else}
-                        <td id="grey">Empty</td>
-                    {/if}
-                </tr>
-                <tr><td>Boots</td></tr>
-                <tr>
-                    {if $boots}
-                        <td><img src="{$basePath}/{$boots->avatar}" /></td>
-                    {else}
-                        <td id="grey">Empty</td>
-                    {/if}
-                </tr>
             </tbody>
         </table>
     </div>

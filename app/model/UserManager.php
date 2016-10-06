@@ -17,10 +17,10 @@ class UserManager extends Nette\Object implements Nette\Security\IAuthenticator
 		COLUMN_ID = 'user_id',
 		COLUMN_NAME = 'username',
 		COLUMN_PASSWORD_HASH = 'password',
-        COLUMN_EMAIL = 'email',
+                COLUMN_EMAIL = 'email',
 		COLUMN_ROLE = 'role',
-        COLUMN_TYPE = 'type',
-        COLUMN_ATTACKED = 'attacked';
+                COLUMN_TYPE = 'type',
+                COLUMN_ATTACKED = 'attacked';
 
 
 	/** @var Nette\database\Context */

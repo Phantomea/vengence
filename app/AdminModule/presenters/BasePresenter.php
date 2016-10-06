@@ -9,19 +9,13 @@ use App\Model\MenuManager;
 use App\Model\MenuItemManager;
 use App\Model\MenuMenuItemManager;
 use App\Model\UserStateManager;
-use App\Model\ArmorManager;
-use App\Model\WeaponManager;
-use App\Model\HelmetManager;
+use App\Model\EquipmentManager;
 use App\Model\BankAccountManager;
-use App\Model\CloakManager;
-use App\Model\ClothManager;
-use App\Model\GloveManager;
-use App\Model\PantsManager;
-use App\Model\MaskManager;
-use App\Model\BootManager;
-use App\Model\NecklaceManager;
+use App\Model\ItemManager;
 
 use Nette\Utils\Image;
+
+use App\Forms\SearchFactory\SearchFactory;
 
 /**
  * Base presenter for all application presenters.
@@ -44,38 +38,18 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
     /** @var UserStateManager @inject*/
     public $userStateManager;
     
-    /** @var ArmorManager @inject*/
-    public $armorManager;
-    
-    /** @var WeaponManager @inject*/
-    public $weaponManager;
+    /** @var EquipmentManager @inject*/
+    public $equipmentManager;
     
     /** @var BankAccountManager @inject*/
     public $bankAccountManager;
     
-    /** @var HelmetManager @inject*/
-    public $helmetManager;
+    /** @var ItemManager @inject*/
+    public $itemManager;
     
-    /** @var CloakManager @inject*/
-    public $cloakManager;
+    /* injected form controls */
     
-    /** @var ClothManager @inject*/
-    public $clothManager;
     
-    /** @var MaskManager @inject*/
-    public $maskManager;
-    
-    /** @var NecklaceManager @inject*/
-    public $necklaceManager;
-    
-    /** @var GloveManager @inject*/
-    public $gloveManager;
-    
-    /** @var PantsManager @inject*/
-    public $pantsManager;
-    
-    /** @var BootManager @inject*/
-    public $bootManager;
     
     
 
@@ -93,7 +67,6 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
                 $this->redirect("Sign:in");
             }
         }
-        
         $this->template->player = $this->getPlayer();
         $this->template->menu = $this->getUserMenu();
     }
@@ -132,32 +105,10 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         
     }
     
-    public function getUserAmor($user_id)
-    {
-        $user = $this->userManager->getUser($user_id);
-        
-        $userHelmet = $this->helmetManager->getHelmet($user->armor->helmet_id);
-        $userCloak = $this->cloakManager->getCloack($user->armor->cloak_id);
-        $userCloth = $this->clothManager->getCloth($user->armor->cloth_id);
-        $userGloves = $this->gloveManager->getGlove($user->armor->glove_id);
-        $userNecklace = $this->necklaceManager->getNecklace($user->armor->necklace_id);
-        $userPants = $this->pantsManager->getPants($user->armor->pants_id);
-        $userBoots = $this->bootManager->getBoot($user->armor->boot_id);
-        
-        $userArmor[] = $userHelmet;
-        $userArmor[] = $userCloak;
-        $userArmor[] = $userCloth;
-        $userArmor[] = $userGloves;
-        $userArmor[] = $userNecklace;
-        $userArmor[] = $userPants;
-        $userArmor[] = $userBoots;
-        
-        return $userArmor;
-    }
-    
     public function insertUploadedImage($image, $folder, $name)
     {
-        $filePath = 'images/';
+        $filePath = '/images/';
+        $name = $this->deleteUtfCharacters($name);
         $fileName = '/'.$name.'.png';
         $path = $filePath . $folder . $fileName;
         $image->move($path);
@@ -165,9 +116,11 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
         return $path;
     }
     
+    /***************** Form controls  *****************************/
+    
+    
     public function deleteUtfCharacters($word)
     {
-
         // i pro multi-byte (napr. UTF-8)
         $table = Array(
           'ä'=>'a',
@@ -255,7 +208,7 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
           'ź'=>'z',
           'Ź'=>'Z',
           '\''=>'',
-          ' '=>''
+          ' '=>'_'
         );
 
         $text = strtr($word, $table);

@@ -1,0 +1,22 @@
+{* Latte template *}
+
+{block content}
+<div id="content-panels">
+    <div>
+        <table class="result">
+            <thead>
+                <tr>
+                    <th>Item avatar preview</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><img src="{$basePath}/{$item->avatar}" /></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div> 
+        {control form}
+    </div>
+</div>

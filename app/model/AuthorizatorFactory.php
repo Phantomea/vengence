@@ -35,7 +35,7 @@ class AuthorizatorFactory extends Nette\Object {
         $acl->addResource('Admin:Sign');
         $acl->addResource('Admin:User');
         $acl->addResource('Admin:Menu');
-        $acl->addResource('Admin:Helmet');
+        $acl->addResource('Admin:Item');
         
         $acl->addResource('Game:Homepage');
         $acl->addResource('Game:Sign');

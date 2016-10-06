@@ -10,7 +10,7 @@
             <tbody>
                 {foreach $menus as $men}
                     <tr>
-                        <td> <a n:href=User:detail {$men->menu_id}><span class="glyphicon glyphicon-cog"></span></a> &nbsp; {$men->name}</td>
+                        <td> <a n:href=Menu:detail {$men->menu_id}><span class="glyphicon glyphicon-cog"></span></a> &nbsp; {$men->name}</td>
                         {ifset $menuItems}
                             {ifset $menuItems[$men->menu_id]}
                                 {foreach $menuItems[$men->menu_id] as $mi}

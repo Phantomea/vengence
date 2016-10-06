@@ -6,7 +6,7 @@ use Nette;
 use Nette\Application\UI\Form;
 
 
-class EditUserBankAccountFactory
+class UserBankAccountFactory
 {
     
     /**

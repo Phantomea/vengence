@@ -13,7 +13,7 @@ use App\Model\HelmetManager;
 use App\Forms\RegisterUserFactory;
 use App\Forms\EditUserFactory;
 use App\Forms\SearchUserFactory;
-use App\Forms\EditUserBankAccountFactory;
+use App\Forms\UserBankAccountFactory;
 
 use Nette\Application\UI;
 use Nette\Application\UI\Form;
@@ -54,27 +54,13 @@ final class UserPresenter extends BasePresenter
             $user = $this->userManager->getUser($user_id);
             $userBankAccount = $this->bankAccountManager->getBankAccount($user->bank_account);
             
-            $userHelmet = $this->helmetManager->getHelmet($user->armor->helmet_id);
-            $userCloak = $this->cloakManager->getCloack($user->armor->cloak_id);
-            $userCloth = $this->clothManager->getCloth($user->armor->cloth_id);
-            $userGloves = $this->gloveManager->getGlove($user->armor->glove_id);
-            $userNecklace = $this->necklaceManager->getNecklace($user->armor->necklace_id);
-            $userPants = $this->pantsManager->getPants($user->armor->pants_id);
-            $userBoots = $this->bootManager->getBoot($user->armor->boot_id);
+            $this->template->user = $user;
             
             $user = $user->toArray();
             $userBankAccount = $userBankAccount->toArray();
             
             $this["editUserForm"]->setDefaults($user);
             $this["editUserBankAccountForm"]->setDefaults($userBankAccount);
-            
-            $this->template->helmet = $userHelmet;
-            $this->template->cloak = $userCloak;
-            $this->template->cloth = $userCloth;
-            $this->template->gloves = $userGloves;
-            $this->template->necklace = $userNecklace;
-            $this->template->pants = $userPants;
-            $this->template->boots = $userBoots;
         }
         
         /* Aciotns */
@@ -114,7 +100,7 @@ final class UserPresenter extends BasePresenter
         protected function createComponentEditUserBankAccountForm()
         {
             $form = new Form();
-            $form = (new \App\Forms\EditUserBankAccountFactory())->create();
+            $form = (new UserBankAccountFactory())->create();
             $form->onSuccess[] = [$this, 'editUserBankAccount'];
             return $form;
         }

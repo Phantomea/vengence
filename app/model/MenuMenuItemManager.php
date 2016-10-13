@@ -27,7 +27,7 @@ class MenuMenuItemManager extends Nette\Object{
 
 	public function getMenuMenuItem($id)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
 	public function setMenuMenuItem($data)
@@ -37,18 +37,34 @@ class MenuMenuItemManager extends Nette\Object{
 
 	public function updateMenuMenuItem($data)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data["".self::COLUMN_ID.""])->update($data);
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $data[''.self::COLUMN_ID.''])->update($data);
 	}
 
 	public function deleteMenuMenuItem($id) 
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
         
         /* Additional functions */
         
-        public function getMenuMenuItemsByMenuId($menu_id)
+        public function getMenuMenuItemsByMenuIdAndMenuItemId($data)
         {
-            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_MENU_ID, $menu_id)->fetchAll();
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_MENU_ID, $data[''.self::COLUMN_MENU_ID.''])->where(self::COLUMN_MENU_ITEM_ID, $data[''.self::COLUMN_MENU_ITEM_ID.''])->fetch();
+        }
+
+
+        public function getMenuMenuItemByMenuId($id)
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_MENU_ID, $id)->fetchAll();
+        }
+        
+        public function getMenuMenuItemsByMenuItemId($id)
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_MENU_ITEM_ID, $id)->fetchAll();
+        }
+        
+        public function getMenuMenuItemByMenuItemId($id)
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_MENU_ITEM_ID, $id)->fetch();
         }
 }

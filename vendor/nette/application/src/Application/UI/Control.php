@@ -182,6 +182,7 @@ abstract class Control extends PresenterComponent implements IRenderable
         {
             $filePath = 'images/';
             $name = $this->deleteUtfCharacters($name);
+            $name = strtolower($name);
             $fileName = '/'.$name.'.png';
             $path = $filePath . $folder . $fileName;
             $image->move($path);

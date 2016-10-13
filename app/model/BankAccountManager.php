@@ -42,7 +42,7 @@ class BankAccountManager extends Nette\Object{
 
 	public function deleteBankAccount($id) 
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
         
         /* Additional functions */

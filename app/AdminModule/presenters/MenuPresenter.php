@@ -10,14 +10,24 @@ use App\Model\MenuMenuItemManager;
 use Nette\Application\UI;
 use Nette\Application\UI\Form;
 
+use Controls\Menu;
+use App\Forms\MenuFactory\MenuFactory;
+
 final class MenuPresenter extends BasePresenter
 {
-	public function renderDefault()
+    private $id;
+    
+    /** @var \App\Forms\MenuFactory\MenuFactory @inject */
+    public $menuFactory;
+    
+	public function renderDefault($id = NULL)
 	{
+            $this->id = $id;
+            
             $menus = $this->menuManager->getMenus();
             foreach($menus as $am)
             {
-                $menuItems[$am->menu_id] = $this->menuMenuItemManager->getMenuMenuItemsByMenuId($am->menu_id);
+                $menuItems[$am->menu_id] = $this->menuMenuItemManager->getMenuMenuItemByMenuId($am->menu_id);
             }
             
             $this->template->menus = $menus;
@@ -25,53 +35,28 @@ final class MenuPresenter extends BasePresenter
             {
                 $this->template->menuItems = $menuItems;
             }
-                
-                
-                
 	}
         
-        protected function createComponentCreateMenuItemsForm()
+        public function renderDetail($id)
         {
-            $allMenus = $this->menuManager->getMenus();
-            foreach ($allMenus as $am)
-            {
-                $menus[$am->menu_id] = $am->name;
-            }
-            
-            $form = new Form();
-            $form->addSelect("menu_id")
-                    ->setItems($menus);
-            $form->addText("name", "Menu item name")
-                    ->setRequired("Name menu item!")
-                    ->setAttribute("placeholder", "Name menu item i.e. Admin menu");
-            $form->addText("link", "Menu item link")
-                    ->setRequired("Type link here!")
-                    ->setAttribute("placeholder", "Homepage:default");
-            $form->addSubmit("add", "Add");
-            $form->onSuccess[] = array($this, "addMenuItem");
-            return $form;
+            $menuItem = $this->menuItemManager->getMenuItem($id);
+            $this->id = $menuItem->menu_item_id;
+            $this->template->menu_item = $menuItem;
         }
         
-        public function addMenuItem($form, $values)
+        public function renderResult($value)
         {
-            if($form["add"]->isSubmittedBy())
-            {
-                if($form->isValid())
-                {
-                    $createMenuItem = $this->menuItemManager->setMenuItem(array(
-                        "name" => $values["name"],
-                        "link" => $values["link"]
-                    ));
-                    $lastMenuItem = $this->menuItemManager->getLastMenuItem();
-                    
-                    $createMenuMenuItem = $this->menuMenuItemManager->setMenuMenuItem(array(
-                        "menu_id" => $values["menu_id"],
-                        "menu_item_id" => $lastMenuItem
-                    ));
-                    
-                    $this->flashMessage("Menu item has been added");
-                    $this->redirect("this");
-                }
-            }
+            $result = $this->menuItemManager->searchMenuItemByNameOrId($value);
+            $this->template->result = $result;
+            $this->template->value = $value;
+        }
+
+
+        protected function createComponentForm() {
+            $control = $this->menuFactory->create($this->id);
+            $control['form']->onSuccess[] = function () {
+                $this->redirect('this');
+            };
+            return $control;
         }
 }

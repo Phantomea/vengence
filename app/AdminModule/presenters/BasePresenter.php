@@ -12,6 +12,7 @@ use App\Model\UserStateManager;
 use App\Model\EquipmentManager;
 use App\Model\BankAccountManager;
 use App\Model\ItemManager;
+use App\Model\LocationManager;
 
 use Nette\Utils\Image;
 
@@ -47,7 +48,8 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
     /** @var ItemManager @inject*/
     public $itemManager;
     
-    /* injected form controls */
+    /** @var LocationManager @inject*/
+    public $locationManager;
     
     
     

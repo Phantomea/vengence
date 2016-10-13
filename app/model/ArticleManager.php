@@ -30,7 +30,7 @@ class ArticleManager extends Nette\Object{
 
 	public function getArticle($id)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
 	public function setArticle($data)
@@ -45,7 +45,7 @@ class ArticleManager extends Nette\Object{
 
 	public function deleteArticle($id) 
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
         
         /* Additional funcitons */

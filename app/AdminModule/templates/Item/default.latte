@@ -54,6 +54,35 @@
                 </tr>
             </tbody>
         </table>
+            <table class="result">
+        <thead>
+            <tr>
+                <th colspan="5">Last 20 items</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Edit</th>
+                <th>Avatar</th>
+                <th>Name</th>
+                <th>Level</th>
+                <th>Delete</th>
+            </tr>
+            {if $lastTwenty}
+                {foreach $lastTwenty as $lt}
+                    <tr>
+                        <td><a n:href="Item:detail $lt->item_id"><span class="glyphicon glyphicon-cog"></span></a></td>
+                        <td><img src="{$basePath}/{$lt->avatar}" width="20px" /></td>
+                        <td>{$lt->name}</td>
+                        <td>{$lt->level}</td>
+                        <td><a n:href="deleteItem $lt->item_id"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    </tr>
+                {/foreach}
+            {else}
+                <td colspan="5">There are no locations, add some.</td>
+            {/if}
+        </tbody>
+    </table>
     </div>
     <div>
         {control form}

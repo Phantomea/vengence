@@ -28,7 +28,7 @@ class LocationManager extends Nette\Object{
 
 	public function getLocation($id)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
 	public function setLocation($data)
@@ -43,6 +43,23 @@ class LocationManager extends Nette\Object{
 
 	public function deleteLocation($id) 
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
+        
+        /* Additional functions */
+        
+        public function numberOfLocations()
+        {
+            return $this->db->table(self::TABLE_NAME)->count();
+        }
+        
+        public function searchLocationByNameOrId($value)
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_NAME.' LIKE ? OR '.self::COLUMN_ID.' LIKE ?', '%'.$value.'%','%'.$value.'%')->fetchAll();
+        }
+        
+        public function getLastTwenty()
+        {
+            return $this->db->table(self::TABLE_NAME)->order(''.self::COLUMN_ID.' DESC')->limit(20)->fetchAll();
+        }
 }

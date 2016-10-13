@@ -6,6 +6,7 @@
     <table class="result">
         <thead>
             <th>ID</th>
+            <th>Avatar</th>
             <th>Username</th>
             <th>Email</th>
             <th>Birth date</th>
@@ -18,6 +19,7 @@
             {foreach $result as $res}
                 <tr>
                     <td>{$res->user_id}</td>
+                    <td><img src="{$basePath}/{$res->avatar}" width="20px" /></td>
                     <td>{$res->username}</td>
                     <td>{$res->email}</td>
                     <td>{$res->birth_date|date:'j.n.Y'}</td>

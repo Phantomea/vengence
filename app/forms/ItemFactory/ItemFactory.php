@@ -4,7 +4,8 @@ namespace App\Forms\ItemFactory;
 
 use Nette;
 
-class ItemFactory extends Nette\Object {
+class ItemFactory extends Nette\Object
+{
 
     private $itemManager;
 

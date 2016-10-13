@@ -1,0 +1,24 @@
+{* Latte template *}
+
+{block content}
+<div id="content-panels">
+    {if $location->avatar}
+        <div>
+            <table class="result">
+                <thead>
+                    <tr>
+                        <th>Avatar preview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="{$basePath}/{$location->avatar}" width="100%" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {/if}
+    <div> 
+        {control form}
+    </div>
+</div>

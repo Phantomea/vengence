@@ -21,6 +21,7 @@ final class ItemPresenter extends BasePresenter
     {
         $this->id = $id;
         
+        $lastTwenty = $this->itemManager->getLastTwenty();
         $numberOfItems = $this->itemManager->getNumberOfItems();
         $numberOfHelmets = $this->itemManager->getNumberOfHelmets();
         $numberOfMasks = $this->itemManager->getNumberOfMasks();
@@ -50,11 +51,12 @@ final class ItemPresenter extends BasePresenter
         $this->template->first_weapon = $numberOfFirstWeapons;
         $this->template->second_weapon = $numberOfSecondWeapons;
         $this->template->potions = $numberOfPotions;
+        $this->template->lastTwenty = $lastTwenty;
     }
     
-    public function renderDetail($item_id)
+    public function renderDetail($id)
     {
-        $item = $this->itemManager->getItem($item_id);
+        $item = $this->itemManager->getItem($id);
         $this->id = $item->item_id;
         $this->template->item = $item;
     }
@@ -66,12 +68,20 @@ final class ItemPresenter extends BasePresenter
         $this->template->value = $value;
     }
     
-    protected function createComponentForm() {
+    protected function createComponentForm()
+    {
         $control = $this->itemFactory->create($this->id);
         $control['form']->onSuccess[] = function () {
             $this->redirect('this');
         };
         return $control;
+    }
+    
+    public function actionDeleteItem($id)
+    {
+        $this->itemManager->deleteItem($id);
+        $this->flashMessage('Item has been deleted', 'success');
+        $this->redirect('Item:default');
     }
     
 }

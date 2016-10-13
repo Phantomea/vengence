@@ -30,7 +30,7 @@ class NpcManager extends Nette\Object{
 
 	public function getNpc($id)
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->fetch();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->fetch();
 	}
 
 	public function setNpc($data)
@@ -45,6 +45,6 @@ class NpcManager extends Nette\Object{
 
 	public function deleteNpc($id) 
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
 }

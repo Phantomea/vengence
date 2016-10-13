@@ -52,7 +52,7 @@ class ItemManager extends Nette\Object{
 
 	public function deleteItem($id) 
 	{
-		return $this->db->table(self::TABLE_NAME)->where(self::COLUMND_ID, $id)->delete();
+		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
         
         /* Additional funcitons */
@@ -134,6 +134,11 @@ class ItemManager extends Nette\Object{
         
         public function searchItemByNameOrId($value)
         {
-                return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_NAME.' LIKE ? OR '.self::COLUMN_ID.' LIKE ?', '%'.$value.'%','%'.$value.'%')->fetchAll();
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_NAME.' LIKE ? OR '.self::COLUMN_ID.' LIKE ?', '%'.$value.'%','%'.$value.'%')->fetchAll();
+        }
+        
+        public function getLastTwenty()
+        {
+            return $this->db->table(self::TABLE_NAME)->order(''.self::COLUMN_ID.' DESC')->limit(20)->fetchAll();
         }
 }

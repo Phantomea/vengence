@@ -8,7 +8,8 @@ use Nette\Application\UI;
 use Nette;
 use App\Model\ItemManager;
 
-class Item extends UI\Control {
+class Item extends UI\Control
+{
 
     private $itemManager;
     private $item;
@@ -132,11 +133,19 @@ class Item extends UI\Control {
                     if($values->avatar->error)
                     {
                         unset($values->avatar);
-                    } else {
+                    } else 
+                    {
                         $values['avatar'] = $this->insertUploadedImage($values->avatar, 'items', $values->name);
                     }
                     $this->itemManager->updateItem($values);
                 } else {
+                    if($values->avatar->error)
+                    {
+                        unset($values->avatar);
+                    } else 
+                    {
+                        $values['avatar'] = $this->insertUploadedImage($values->avatar, 'items', $values->name);
+                    }
                     $this->itemManager->setItem($values);
                 }
                 $this->presenter->flashMessage('Item has been saved.', 'success');

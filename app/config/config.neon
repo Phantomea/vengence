@@ -29,6 +29,7 @@ services:
 	- App\Model\EquipmentManager
 	- App\Model\InventoryManager
 	- App\Model\ItemManager
+	- App\Model\LocationManager
 	- App\Model\AuthorizatorFactory
 	- App\Forms\FormFactory
 	- App\Forms\SignFormFactory
@@ -38,6 +39,8 @@ services:
 	- App\Forms\UserBankAccountFactory
 	- App\Forms\WeaponFactory
 	- App\Forms\ItemFactory\ItemFactory
+	- App\Forms\MenuFactory\MenuFactory
+	- App\Forms\LocationFactory\LocationFactory
 	router: App\RouterFactory::createRouter
 	-
 		class: Nette\Security\Permission

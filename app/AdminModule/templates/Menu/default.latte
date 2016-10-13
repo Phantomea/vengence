@@ -10,7 +10,7 @@
             <tbody>
                 {foreach $menus as $men}
                     <tr>
-                        <td> <a n:href=Menu:detail {$men->menu_id}><span class="glyphicon glyphicon-cog"></span></a> &nbsp; {$men->name}</td>
+                        <td> <a href="#"><span class="glyphicon glyphicon-cog"></span></a> &nbsp; {$men->name}</td>
                         {ifset $menuItems}
                             {ifset $menuItems[$men->menu_id]}
                                 {foreach $menuItems[$men->menu_id] as $mi}
@@ -28,26 +28,6 @@
         </table>
     </div>      
     <div>
-        <form n:name=createMenuItemsForm>
-            <table>
-                <thead>
-                    <th>Create menu item</th>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><select n:name=menu_id></select></td>
-                    </tr>
-                    <tr>
-                        <td><input n:name=name /></td>
-                    </tr>
-                    <tr>
-                        <td><input n:name=link /></td>
-                    </tr>
-                    <tr>
-                        <td><button n:name=add class="btn-success">Add</button></td>
-                    </tr>
-                </tbody>
-            </table> 
-        </form>
+        {control form}
     </div>
 </div>

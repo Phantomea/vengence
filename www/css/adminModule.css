@@ -64,7 +64,7 @@ table tr td button {
 }
 
 table.result tr td,
-table.result tr th {
+table.result tbody tr th {
     text-align: center;
 }
 

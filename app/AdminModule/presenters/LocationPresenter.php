@@ -23,13 +23,11 @@ class LocationPresenter extends BasePresenter
     {
         $this->id = $id;
         
-        $locations = $this->locationManager->getLocations();
         $numberOfLocations = $this->locationManager->numberOfLocations();
-        $lastTwenty = $this->locationManager->getLastTwenty();
+        $lastTen = $this->locationManager->getLastTen();
         
-        $this->template->locations = $locations;
         $this->template->number = $numberOfLocations;
-        $this->template->lastTwenty = $lastTwenty;
+        $this->template->lastTen = $lastTen;
     }
     
     public function renderDetail($id)
@@ -50,15 +48,19 @@ class LocationPresenter extends BasePresenter
     protected function createComponentForm() {
         $control = $this->locationFactory->create($this->id);
         $control['form']->onSuccess[] = function () {
-            $this->redirect('this');
+            $this->redirect('Location:default');
         };
         return $control;
     }
     
     public function actionDeleteLocation($id)
     {
-        $this->locationManager->deleteLocation($id);
-        $this->flashMessage('Location has been deleted', 'success');
-        $this->redirect('Location:default');
+        try {
+            $this->locationManager->deleteLocation($id);
+            $this->flashMessage('Location has been deleted', 'success');
+            $this->redirect('Location:default');
+        } catch (Exception $ex) {
+            $this->flashMessage($exc->getMessage(), 'danger');
+        }
     }
 }

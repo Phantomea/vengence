@@ -43,4 +43,11 @@ class LocationNpcManager extends Nette\Object{
 	{
 		return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_ID, $id)->delete();
 	}
+        
+        /* Additional functions */
+        
+        public function getLocationNpcByNpcId($id)
+        {
+            return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_NPC, $id)->fetch();
+        }
 }

@@ -21,7 +21,7 @@ class MenuManager extends Nette\Object{
 
 	public function getMenus()
 	{
-            return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->fetchAll();
+            return $this->db->table(self::TABLE_NAME)->order(self::COLUMN_ID)->order('menu_id')->fetchAll();
 	}
 
 	public function getMenu($id)

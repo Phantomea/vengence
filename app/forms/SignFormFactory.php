@@ -30,10 +30,11 @@ class SignFormFactory extends Nette\Object
 	{
 		$form = $this->factory->create();
 		$form->addText('username', 'Username:')
-			->setRequired('Please enter your username.');
-
+			->setRequired('Please enter your username.')
+                        ->setAttribute('placeholder', 'Username');
 		$form->addPassword('password', 'Password:')
-			->setRequired('Please enter your password.');
+			->setRequired('Please enter your password.')
+                        ->setAttribute('placeholder', '****');
 
 		$form->addCheckbox('remember', 'Keep me signed in');
 

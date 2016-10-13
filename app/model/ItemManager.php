@@ -137,8 +137,8 @@ class ItemManager extends Nette\Object{
             return $this->db->table(self::TABLE_NAME)->where(self::COLUMN_NAME.' LIKE ? OR '.self::COLUMN_ID.' LIKE ?', '%'.$value.'%','%'.$value.'%')->fetchAll();
         }
         
-        public function getLastTwenty()
+        public function getLastTen()
         {
-            return $this->db->table(self::TABLE_NAME)->order(''.self::COLUMN_ID.' DESC')->limit(20)->fetchAll();
+            return $this->db->table(self::TABLE_NAME)->order(''.self::COLUMN_ID.' DESC')->limit(10)->fetchAll();
         }
 }

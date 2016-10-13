@@ -1,6 +1,30 @@
 {block content}
-<h1 n:block=title>Sign in</h1>
-
-{control signInForm}
+<div id="content-panels">
+    <div class='sign'>
+        <form n:name=signInForm>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Login</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input n:name=username /></td>
+                    </tr>
+                    <tr>
+                        <td><input n:name=password /></td>
+                    </tr>
+                    <tr>
+                        <td><input n:name=remember /> Keep me signed in</td>
+                    </tr>
+                    <tr>
+                        <td><input n:name=send class='btn-success' /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
 
 {* or use {include '../components/form.latte', form => signInForm} *}

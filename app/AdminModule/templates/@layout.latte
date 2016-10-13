@@ -52,9 +52,9 @@
                                 <tr>
                                     <td>
                                         {ifset $value}
-                                            <input name="value" autocomplete="off" value="{$value}" placeholder="Choose name or ID"/>
+                                            <input name="value" type="text" autocomplete="off" value="{$value}" placeholder="Choose name or ID"/>
                                             {else}
-                                            <input name="value" autocomplete="off" placeholder="Choose name or ID" />
+                                            <input name="value" type="text" autocomplete="off" placeholder="Choose name or ID" />
                                         {/ifset}
                                     </td>
                                     <td><button name="search"><span class="glyphicon glyphicon-search"></span></button></td>

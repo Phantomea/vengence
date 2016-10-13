@@ -3,7 +3,7 @@
 {block content}
 
 {if $result}
-    <table class="result">
+    <table>
         <thead>
             <th>ID</th>
             <th>Avatar</th>
@@ -26,9 +26,9 @@
                     <td>{$res->role}</td>
                     <td>
                         {if $res->type == 1}
-                            Ghoul
+                            Zombie
                         {else}
-                            Investigator
+                            Human
                         {/if}
                     </td>
                     <td><a n:href="User:detail, $res->user_id"><span class="glyphicon glyphicon-cog"></span></a></td>

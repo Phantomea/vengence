@@ -55,7 +55,7 @@ final class MenuPresenter extends BasePresenter
         protected function createComponentForm() {
             $control = $this->menuFactory->create($this->id);
             $control['form']->onSuccess[] = function () {
-                $this->redirect('this');
+                $this->redirect('Menu:default');
             };
             return $control;
         }

@@ -13,6 +13,9 @@ use App\Model\EquipmentManager;
 use App\Model\BankAccountManager;
 use App\Model\ItemManager;
 use App\Model\LocationManager;
+use App\Model\NpcManager;
+use App\Model\LocationNpcManager;
+use App\Model\SpellManager;
 
 use Nette\Utils\Image;
 
@@ -51,7 +54,14 @@ abstract class BasePresenter extends Nette\Application\UI\Presenter
     /** @var LocationManager @inject*/
     public $locationManager;
     
+    /** @var NpcManager @inject*/
+    public $npcManager;
     
+    /** @var LocationNpcManager @inject*/
+    public $locationNpcManager;
+    
+     /** @var SpellManager @inject*/
+    public $spellManager;
     
     
 

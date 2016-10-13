@@ -52,9 +52,14 @@ table tbody {
     box-shadow: 0px 1px 3px #bababa;
 }
 
-table tr td input,
+table tr td input[type="text"],
+table tr td input[type="number"],
+table tr td input[type="submit"],
+table tr td input[type="password"],
+table tr td input[type="email"],
 table tr td select,
-table tr td button {
+table tr td button,
+table tr td textarea {
     width: 100%;
     padding: 5px 10px;
     border: 1px solid #bababa;
@@ -63,9 +68,18 @@ table tr td button {
     cursor: pointer;
 }
 
+table tr td textarea {
+    max-width: 100%;
+    max-height: 400px;
+}
+
 table.result tr td,
 table.result tbody tr th {
     text-align: center;
+}
+
+table.stats tr td:nth-child(even) {
+    font-weight: bold;
 }
 
 /* IDs */
@@ -176,6 +190,19 @@ table.result tbody tr th {
     -ms-box-flex: 1;
     box-flex: 1;
     margin: 5px;
+}
+
+#content-panels > div.sign {
+    overflow: hidden;
+    position: absolute;
+    width: 99%;
+    height: 90%;
+    display: flex;
+    justify-content: center; /*centers items on the line (the x-axis by default)*/
+    align-items: center; /*centers items on the cross-axis (y by default)*/  
+}
+#content-panels > div.sign form {
+    width: 250px;
 }
 
 #log-out a{

@@ -17,14 +17,13 @@
             <th>Damage</th>
             <th>Health</th>
             <th>Type</th>
-            <th>Owner</th>
             <th>Edit</th>
             <th>Delete</th>
         </thead>
         <tbody>
             {foreach $result as $res}
                 <tr>
-                    <td>{$res->item_id}</td>
+                    <td>{$res->npc_id}</td>
                     <td><img src="{$basePath}/{$res->avatar}" width="20px" /></td>
                     <td>{$res->name}</td>
                     <td>{$res->level}</td>
@@ -36,17 +35,16 @@
                     <td>{$res->armor}</td>
                     <td>{$res->first_damage}-{$res->second_damage}</td>
                     <td>{$res->health}</td>
-                    <td>{$res->type}</td>
                     <td>
-                        {if $res->owner == 1}
-                            Ghoul
+                        {if $res->type == 'normal'}
+                            Normal
                         {else}
-                            Investigator
+                            Boss
                         {/if}
                     </td>
                     
-                    <td><a n:href="Item:detail, $res->item_id"><span class="glyphicon glyphicon-cog"></span></a></td>
-                    <td><a n:href="deleteItem $res->item_id"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <td><a n:href="Npc:detail, $res->npc_id"><span class="glyphicon glyphicon-cog"></span></a></td>
+                    <td><a n:href="deleteNpc $res->npc_id"><span class="glyphicon glyphicon-trash"></span></a></td>
                 </tr>
             {/foreach}
         </tbody>

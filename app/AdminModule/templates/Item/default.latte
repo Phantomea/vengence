@@ -68,8 +68,8 @@
                 <th>Level</th>
                 <th>Delete</th>
             </tr>
-            {if $lastTwenty}
-                {foreach $lastTwenty as $lt}
+            {if $lastTen}
+                {foreach $lastTen as $lt}
                     <tr>
                         <td><a n:href="Item:detail $lt->item_id"><span class="glyphicon glyphicon-cog"></span></a></td>
                         <td><img src="{$basePath}/{$lt->avatar}" width="20px" /></td>

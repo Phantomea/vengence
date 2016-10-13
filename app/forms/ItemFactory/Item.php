@@ -13,26 +13,6 @@ class Item extends UI\Control
 
     private $itemManager;
     private $item;
-    private $owners = [
-        1 => 'Ghoul',
-        2 => 'Investigator'
-    ];
-    
-    private $types = [
-        'helmet' => 'Helmet',
-        'mask' => 'Mask',
-        'cloak' => 'Cloak',
-        'necklace' => 'Necklace',
-        'armor' => 'Armor',
-        'glove' => 'Glove',
-        'ring' => 'Ring',
-        'belt' => 'Belt',
-        'trousers' => 'Trousers',
-        'boot' => 'Boots',
-        'first_weapon' => 'First weapon',
-        'second_wepaon' => 'Second weapon',
-        'potion' => 'Potion'
-    ];
 
     public function __construct(ItemManager $im, $id) {
         parent::__construct();
@@ -49,53 +29,64 @@ class Item extends UI\Control
         $form = new UI\Form;
         $form->addHidden('item_id');
         $form->addText('name', 'Name')
+                ->setRequired()
                 ->setAttribute('placeholder', 'Item\'s name');
         $form->addText('strength', 'Strength')
                 ->setType('number')
                 ->setDefaultValue(0)
+                ->setRequired()
                 ->setAttribute('placeholder', '0');
         $form->addText('agility', 'Agiltiy')
                 ->setType('number')
                 ->setDefaultValue(0)
+                ->setRequired()
                 ->setAttribute('placeholder', '0');
         $form->addText('intelligence', 'Intelligence')
                 ->setType('number')
                 ->setDefaultValue(0)
+                ->setRequired()
                 ->setAttribute('placeholder', '0');
         $form->addText('vitality', 'Vitality')
                 ->setType('number')
                 ->setDefaultValue(0)
+                ->setRequired()
                 ->setAttribute('placeholder', '0');
         $form->addText('charisma', 'Charisma')
                 ->setType('number')
                 ->setDefaultValue(0)
+                ->setRequired()
                 ->setAttribute('placeholder', '0');
         $form->addText('armor', 'Armor')
                 ->setType('number')
                 ->setDefaultValue(0)
+                ->setRequired()
                 ->setAttribute('placeholder', '0');
         $form->addText('first_damage', 'First damage')
                 ->setType('number')
                 ->setDefaultValue(0)
+                ->setRequired()
                 ->setAttribute('placeholder', '0');
         $form->addText('second_damage', 'Second damage')
                 ->setType('number')
                 ->setDefaultValue(0)
+                ->setRequired()
                 ->setAttribute('placeholder', '0');
         $form->addText('health', 'Health')
                 ->setType('number')
                 ->setDefaultValue(0)
+                ->setRequired()
                 ->setAttribute('placeholder', '0');
         $form->addText('level', 'Level')
                 ->setType('number')
                 ->setDefaultValue(1)
+                ->setRequired()
                 ->setAttribute('placeholder', '0');
         $form->addUpload('avatar')
                 ->addCondition($form::IMAGE)
                     ->addRule($form::MIME_TYPE, 'File has to be JPEG or PNG!', array('image/jpeg', 'image/png'))
                 ->addRule($form::MAX_FILE_SIZE, 'Maximum size of image has to be 64 kB.', 64 * 1024);
         $form->addSelect('type', 'Type')
-                ->setItems($this->types);
+                ->setItems($this->itemTypes);
         $form->addSelect('owner', 'Owner')
                 ->setItems($this->owners);
         $form->addSubmit('save', 'Save');
@@ -125,27 +116,22 @@ class Item extends UI\Control
     public function itemFormSucceeded(UI\Form $form) {
         $values = $form->getValues();
         try {            
-            if($values->first_damage > $values->second_damage){
+            if($values->avatar->error)
+            {
+                unset($values->avatar);
+            } else
+            {
+                $values['avatar'] = $this->insertUploadedImage($values->avatar, 'items', $values->name);
+            }
+            
+            if($values->first_damage > $values->second_damage)
+            {
                 $this->presenter->flashMessage('First damage can\'t be bigger than second damage', 'success');
             } else {
                 if($values->item_id <> 0)
                 {
-                    if($values->avatar->error)
-                    {
-                        unset($values->avatar);
-                    } else 
-                    {
-                        $values['avatar'] = $this->insertUploadedImage($values->avatar, 'items', $values->name);
-                    }
                     $this->itemManager->updateItem($values);
                 } else {
-                    if($values->avatar->error)
-                    {
-                        unset($values->avatar);
-                    } else 
-                    {
-                        $values['avatar'] = $this->insertUploadedImage($values->avatar, 'items', $values->name);
-                    }
                     $this->itemManager->setItem($values);
                 }
                 $this->presenter->flashMessage('Item has been saved.', 'success');

@@ -1,0 +1,57 @@
+{* Latte template *}
+
+{block content}
+<div id="content-panels">
+    {if $spell->avatar}
+        <div>
+            <table class="result">
+                <thead>
+                    <tr>
+                        <th>Avatar preview</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="{$basePath}/{$spell->avatar}" width="100%" /></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    {/if}
+    <div> 
+        {control form}
+        <table class="stats">
+            <thead>
+                <tr>
+                    <th colspan="4">Spell stats</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Name</td>
+                    <td>{$spell->name}</td>
+                    <td>Damage</td>
+                    <td>{$spell->damage}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>{$spell->price}</td>
+                    <td>Level</td>
+                    <td>{$spell->level}</td>
+                </tr>
+                <tr>
+                    <td>Mana cost</td>
+                    <td>{$spell->mana}</td>
+                    <td>Type</td>
+                    <td>
+                        {if $spell->type == 1}
+                            Zombie's spell
+                        {else}
+                            Human's spell
+                        {/if}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

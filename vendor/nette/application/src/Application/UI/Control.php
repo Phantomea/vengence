@@ -29,7 +29,31 @@ abstract class Control extends PresenterComponent implements IRenderable
 	/** @var bool */
 	public $snippetMode;
         
-
+        public $owners = [
+            1 => 'Zombie',
+            2 => 'Human'
+        ];
+        
+        public $itemTypes = [
+            'helmet' => 'Helmet',
+            'mask' => 'Mask',
+            'cloak' => 'Cloak',
+            'necklace' => 'Necklace',
+            'armor' => 'Armor',
+            'glove' => 'Glove',
+            'ring' => 'Ring',
+            'belt' => 'Belt',
+            'trousers' => 'Trousers',
+            'boot' => 'Boots',
+            'first_weapon' => 'First weapon',
+            'second_wepaon' => 'Second weapon',
+            'potion' => 'Potion'
+        ];
+        
+        public $npcTypes = [
+            'normal' => 'Normal',
+            'boss' => 'Boss'
+        ];
 
 	/********************* template factory ****************d*g**/
 

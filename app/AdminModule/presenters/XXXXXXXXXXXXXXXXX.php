@@ -18,7 +18,7 @@ class xxxxx  extends BasePresenter
     
     public function renderDetail($id)
     {
-        
+        $this->id = $id;
     }
     
     public function renderResult($value)

@@ -30,6 +30,9 @@ services:
 	- App\Model\InventoryManager
 	- App\Model\ItemManager
 	- App\Model\LocationManager
+	- App\Model\NpcManager
+	- App\Model\LocationNpcManager
+	- App\Model\SpellManager
 	- App\Model\AuthorizatorFactory
 	- App\Forms\FormFactory
 	- App\Forms\SignFormFactory
@@ -41,6 +44,8 @@ services:
 	- App\Forms\ItemFactory\ItemFactory
 	- App\Forms\MenuFactory\MenuFactory
 	- App\Forms\LocationFactory\LocationFactory
+	- App\Forms\NpcFactory\NpcFactory
+	- App\Forms\SpellFactory\SpellFactory
 	router: App\RouterFactory::createRouter
 	-
 		class: Nette\Security\Permission

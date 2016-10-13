@@ -1,0 +1,62 @@
+{* Latte template *}
+
+{block content}
+<div id="content-panels">
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th colspan="2">Npc info</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Number of NPCs</td>
+                    <td>{$number}</td>
+                </tr>
+                {if $numberByLevel}
+                    {for $i=1; $i <= 100; $i=$i+4}
+                        <tr>
+                            <td>Number of NPCs from <strong>{$i}lvl</strong> - <strong>{$i+4}lvl</strong></td>
+                            <td>{$numberByLevel[$i]}</td>
+                        </tr>
+                    {/for}
+                {/if}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        {control form}
+        <table class="result">
+            <thead>
+                <tr>
+                    <th colspan="6">Last 20 NPCs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Edit</th>
+                    <th>Avatar</th>
+                    <th>Name</th>
+                    <th>Level</th>
+                    <th>Type</th>
+                    <th>Delete</th>
+                </tr>
+                {if $lastTen}
+                    {foreach $lastTen as $lt}
+                        <tr>
+                            <td><a n:href="Npc:detail $lt->npc_id"><span class="glyphicon glyphicon-cog"></span></a></td>
+                            <td><img src="{$basePath}/{$lt->avatar}" width="20px" /></td>
+                            <td>{$lt->name}</td>
+                            <td>{$lt->level}</td>
+                            <td>{$lt->type}</td>
+                            <td><a n:href="deleteNpc $lt->npc_id"><span class="glyphicon glyphicon-trash"></span></a></td>
+                        </tr>
+                    {/foreach}
+                {else}
+                    <td colspan="6">There are no npcs, add some.</td>
+                {/if}
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -21,7 +21,7 @@ final class ItemPresenter extends BasePresenter
     {
         $this->id = $id;
         
-        $lastTwenty = $this->itemManager->getLastTwenty();
+        $lastTen = $this->itemManager->getLastTen();
         $numberOfItems = $this->itemManager->getNumberOfItems();
         $numberOfHelmets = $this->itemManager->getNumberOfHelmets();
         $numberOfMasks = $this->itemManager->getNumberOfMasks();
@@ -51,7 +51,7 @@ final class ItemPresenter extends BasePresenter
         $this->template->first_weapon = $numberOfFirstWeapons;
         $this->template->second_weapon = $numberOfSecondWeapons;
         $this->template->potions = $numberOfPotions;
-        $this->template->lastTwenty = $lastTwenty;
+        $this->template->lastTen = $lastTen;
     }
     
     public function renderDetail($id)
@@ -79,9 +79,13 @@ final class ItemPresenter extends BasePresenter
     
     public function actionDeleteItem($id)
     {
-        $this->itemManager->deleteItem($id);
-        $this->flashMessage('Item has been deleted', 'success');
-        $this->redirect('Item:default');
+        try {
+            $this->itemManager->deleteItem($id);
+            $this->flashMessage('Item has been deleted', 'success');
+            $this->redirect('Item:default');
+        } catch (Exception $ex) {
+            $this->flashMessage($exc->getMessage(), 'danger');
+        }
     }
     
 }

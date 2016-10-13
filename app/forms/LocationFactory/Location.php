@@ -28,10 +28,12 @@ class Location extends UI\Control
         $form = new UI\Form;
         $form->addHidden('location_id');
         $form->addText('name','Location name')
+                ->setRequired()
                 ->setAttribute('placeholder', 'Location\'s name');
         $form->addText('minimum_level')
                 ->setType('number')
                 ->setDefaultValue(1)
+                ->setRequired()
                 ->setAttribute('placeholder', 'Minimum level of player needed to enter this location');
         $form->addUpload('avatar')
                 ->addCondition($form::IMAGE)
@@ -73,6 +75,7 @@ class Location extends UI\Control
                 }
                 $this->locationManager->setLocation($values);
             }
+            $this->flashMessage('Changes has been succesfully made!','success');
         } catch (Exception $ex) {
             $this->presenter->flashMessage($exc->getMessage(), 'danger');
         }
